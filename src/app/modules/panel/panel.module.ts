@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { PanelRoutingModule } from './panel-routing.module';
 import { PanelComponent } from './panel.component';
 // IMPORTAMOS EL PANEL MATERIAL
@@ -28,7 +27,7 @@ import { AlumnosModule } from './modules/alumnos/alumnos.module';
     MatToolbarModule,
     MatIconModule,
     MatListModule,
-    AlumnosModule
+    AlumnosModule,
   ],
   exports: [PanelComponent],
 })

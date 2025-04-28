@@ -20,12 +20,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 //IMPORTAMOS ICONOS
 import { MatIconModule } from '@angular/material/icon';
+import { AlumnoApellidoNombrePipe } from './pipes/alumno-apellido-nombre.pipe';
+import { Cabeceras20Directive } from './directives/cabeceras20.directive';
 
 
 @NgModule({
   declarations: [
     AlumnosComponent,
-    AlumnosTablaComponent
+    AlumnosTablaComponent,
+    AlumnoApellidoNombrePipe,
+    Cabeceras20Directive
   ],
   imports: [
     CommonModule,

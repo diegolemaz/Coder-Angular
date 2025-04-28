@@ -10,12 +10,11 @@ import { Alumno } from '../../models/index';
   standalone: false,
   templateUrl: './alumnos-tabla.component.html',
   styles: `* {
-    //width: 70vw;
   }`,
   
 })
 export class AlumnosTablaComponent {
-  displayedColumns: string[] = ['doc', 'nombre', 'apellido', 'acciones' ];
+  displayedColumns: string[] = ['doc', 'alumno' , 'curso', 'acciones' ];
   
   
   // INICIALIZAMOS DATA DEL COMPONENTE PADRE
