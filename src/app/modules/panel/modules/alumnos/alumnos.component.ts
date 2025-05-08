@@ -27,7 +27,7 @@ export class AlumnosComponent {
     { doc: 855756, nombre: 'Jorge', apellido: 'Mestoy', curso: 'Javascript' },
     { doc: 506783, nombre: 'Gustavo', apellido: 'Madrin', curso: 'Marketing' },
     {
-      doc: 506783,
+      doc: 506123,
       nombre: 'Solana',
       apellido: 'Rodriguez',
       curso: 'Marketing',
@@ -38,30 +38,39 @@ export class AlumnosComponent {
 
   estoyEditDoc: number | null = null;
 
+
+  // VALIDACIONES
   constructor(private fb: FormBuilder) {
     this.alumnoForm = this.fb.group({
-      nombre: [''],
-      apellido: [''],
-      doc: [''],
-      curso: [''],
+      nombre: ['', [Validators.required, Validators.minLength(3)]],
+      apellido: ['', [Validators.required, Validators.minLength(3)]],
+      doc: [
+        '',
+        [Validators.required, Validators.min(9999), Validators.max(9999999)],
+      ],
+      curso: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
 
-  //ON SUBMIT EDITANDO O AGREGANDO ALUMNO
+  //ON SUBMIT EDITANDO O AGREGANDO ALUMNO CON ALERT VALIDACION
   onSubmit() {
-    if (this.estoyEditDoc) {
-      this.alumnosData = this.alumnosData.map((alu) =>
-        alu.doc === this.estoyEditDoc
-          ? { ...alu, ...this.alumnoForm.value }
-          : alu
-      );
+    if (this.alumnoForm.invalid) {
+      alert('Hay errores en el formulario');
     } else {
-      // SI NO ESTOY EDITANDO, AGREGAR NUEVO PRODUCTO
-      this.alumnosData = [...this.alumnosData, this.alumnoForm.value];
+      if (this.estoyEditDoc) {
+        this.alumnosData = this.alumnosData.map((alu) =>
+          alu.doc === this.estoyEditDoc
+            ? { ...alu, ...this.alumnoForm.value }
+            : alu
+        );
+      } else {
+        // SI NO ESTOY EDITANDO, AGREGAR NUEVO PRODUCTO
+        this.alumnosData = [...this.alumnosData, this.alumnoForm.value];
+        this.estoyEditDoc = null;
+      }
+      this.alumnoForm.reset();
       this.estoyEditDoc = null;
     }
-    this.alumnoForm.reset();
-    this.estoyEditDoc = null;
   }
 
   // BORRAR ALUMNO
