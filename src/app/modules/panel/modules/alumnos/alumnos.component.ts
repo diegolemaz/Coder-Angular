@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Alumno } from './models/index';
+import { AlumnoService } from './alumno.services';
+import { first, Subscription, take } from 'rxjs';
 
 @Component({
   selector: 'app-alumnos',
@@ -11,36 +13,24 @@ import { Alumno } from './models/index';
 })
 export class AlumnosComponent {
   alumnoForm: FormGroup;
-
-  alumnosData: Alumno[] = [
-    { doc: 232323, nombre: 'Juan', apellido: 'Gonzalez', curso: 'Angular' },
-    { doc: 678564, nombre: 'Maria', apellido: 'Melendez', curso: 'React Js' },
-    {
-      doc: 752435,
-      nombre: 'Gaston',
-      apellido: 'Martinez',
-      curso: 'JavaScript',
-    },
-    { doc: 353990, nombre: 'Marcelo', apellido: 'Perez', curso: 'Diseño Web' },
-    { doc: 847897, nombre: 'Juliana', apellido: 'Mendez', curso: 'Angular' },
-    { doc: 396735, nombre: 'Romina', apellido: 'Franchi', curso: 'React Js' },
-    { doc: 855756, nombre: 'Jorge', apellido: 'Mestoy', curso: 'Javascript' },
-    { doc: 506783, nombre: 'Gustavo', apellido: 'Madrin', curso: 'Marketing' },
-    {
-      doc: 506123,
-      nombre: 'Solana',
-      apellido: 'Rodriguez',
-      curso: 'Marketing',
-    },
-    { doc: 590704, nombre: 'Pablo', apellido: 'Benitez', curso: 'React Js' },
-    { doc: 647546, nombre: 'Rodrigo', apellido: 'Perez', curso: 'Angular' },
-  ];
-
+  alumnosData: Alumno[] = [];
   estoyEditDoc: number | null = null;
+  estoyCargando = false;
 
 
   // VALIDACIONES
-  constructor(private fb: FormBuilder) {
+
+  //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// SERVICIO
+
+alumnosSubscription: Subscription | null = null;
+
+
+  constructor(private fb: FormBuilder, private alumnoService: AlumnoService) {
+   // this.alumnoService.getAlumnos();
+
+   this.loadAlumnosObservable(); // llamando obs
+    
     this.alumnoForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.minLength(3)]],
       apellido: ['', [Validators.required, Validators.minLength(3)]],
@@ -52,7 +42,23 @@ export class AlumnosComponent {
     });
   }
 
-  //ON SUBMIT EDITANDO O AGREGANDO ALUMNO CON ALERT VALIDACION
+    // LOAD ALUMNOS OBS ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    loadAlumnosObservable() {
+      this.estoyCargando = true;
+      this.alumnosSubscription = this.alumnoService.getAlumnos$().subscribe({
+          next: (datos) => {
+            this.alumnosData = datos; 
+          },
+          error: (error) => console.error(error),
+          complete: () => {
+            this.estoyCargando = false;
+          } 
+        })
+    };
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+//ON SUBMIT EDITANDO O AGREGANDO ALUMNO CON ALERT VALIDACION
   onSubmit() {
     if (this.alumnoForm.invalid) {
       alert('Hay errores en el formulario');

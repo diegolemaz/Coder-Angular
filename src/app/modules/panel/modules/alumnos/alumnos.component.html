@@ -1,6 +1,11 @@
 <app-alumnos-tabla (borrarAlumno)="onBorrarAlumno($event)" (editarAlumno)="onEditarAlumno($event)" [dataSource]="alumnosData"/>
 
 <div class="d-flex align-items-center my-4">
+  <ng-container *ngIf="estoyCargando; else noEstoyCargando">
+    <P>Por favor espere...</P>
+  </ng-container>
+  <ng-template #noEstoyCargando>
+  
 <form [formGroup]="alumnoForm" (ngSubmit)="onSubmit()"  class="container text-center">
   <div class="row">
     <div class="col">
@@ -34,4 +39,5 @@
     </div>
   </div>
 </form>
+</ng-template>
 </div>
