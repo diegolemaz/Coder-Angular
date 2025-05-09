@@ -7,7 +7,7 @@ import { Alumno } from '../models';
 })
 export class AlumnoApellidoNombrePipe implements PipeTransform {
 
-  transform(value: Alumno, ...args: unknown[]): unknown {
+  transform(value: Alumno, ...args: unknown[]): string {
     return value.apellido + ', ' + value.nombre;
   }
 

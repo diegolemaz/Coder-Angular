@@ -91,4 +91,9 @@ alumnosSubscription: Subscription | null = null;
     this.estoyEditDoc = alu.doc;
     this.alumnoForm.patchValue(alu);
   }
+
+  // DESUSCRIBIRME A ALUMNOS OBS
+  ngOnDestroy(): void {
+  this.alumnosSubscription?.unsubscribe();
+  }
 }

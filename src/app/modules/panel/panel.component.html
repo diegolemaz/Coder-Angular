@@ -4,20 +4,21 @@
     (click)="drawer.toggle()"
     mat-icon-button
     class="example-icon"
-    aria-label="Example icon-button with menu icon">
+    aria-label="Example icon-button with menu icon"
+  >
     <mat-icon>menu</mat-icon>
-    </button>
-    <span>CODERHOUSE</span>
-    <span class="example-spacer"></span>
+  </button>
+  <span>CODERHOUSE</span>
+  <span class="example-spacer"></span>
 </mat-toolbar>
 
 <!-- SIDEBAR -->
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
     <app-nav-menu />
-  </mat-drawer>
-
-  <div class="example-sidenav-content">
+          </mat-drawer>
+  <!-- <div class="example-sidenav-content"> -->
+    <div>
     <app-alumnos />
   </div>
 </mat-drawer-container>
