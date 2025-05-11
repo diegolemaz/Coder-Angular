@@ -17,48 +17,43 @@ export class AlumnosComponent {
   estoyEditDoc: number | null = null;
   estoyCargando = false;
 
-
   // VALIDACIONES
 
   //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// SERVICIO
+  // SERVICIO
 
-alumnosSubscription: Subscription | null = null;
-
+  alumnosSubscription: Subscription | null = null;
 
   constructor(private fb: FormBuilder, private alumnoService: AlumnoService) {
-   // this.alumnoService.getAlumnos();
+    // this.alumnoService.getAlumnos();
 
-   this.loadAlumnosObservable(); // llamando obs
-    
+    this.loadAlumnosObservable(); // llamando obs
+
     this.alumnoForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.minLength(3)]],
       apellido: ['', [Validators.required, Validators.minLength(3)]],
-      doc: [
-        '',
-        [Validators.required, Validators.min(9999), Validators.max(9999999)],
-      ],
+      doc: ['', [Validators.required, Validators.min(9999), Validators.max(9999999)]],
       curso: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
 
-    // LOAD ALUMNOS OBS ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    loadAlumnosObservable() {
-      this.estoyCargando = true;
-      this.alumnosSubscription = this.alumnoService.getAlumnos$().subscribe({
-          next: (datos) => {
-            this.alumnosData = datos; 
-          },
-          error: (error) => console.error(error),
-          complete: () => {
-            this.estoyCargando = false;
-          } 
-        })
-    };
+  // LOAD ALUMNOS OBS ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  loadAlumnosObservable() {
+    this.estoyCargando = true;
+    this.alumnosSubscription = this.alumnoService.getAlumnos$().subscribe({
+      next: (datos) => {
+        this.alumnosData = datos;
+      },
+      error: (error) => console.error(error),
+      complete: () => {
+        this.estoyCargando = false;
+      },
+    });
+  }
 
-// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- 
-//ON SUBMIT EDITANDO O AGREGANDO ALUMNO CON ALERT VALIDACION
+  // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+  //ON SUBMIT EDITANDO O AGREGANDO ALUMNO CON ALERT VALIDACION
   onSubmit() {
     if (this.alumnoForm.invalid) {
       alert('Hay errores en el formulario');
@@ -94,6 +89,6 @@ alumnosSubscription: Subscription | null = null;
 
   // DESUSCRIBIRME A ALUMNOS OBS
   ngOnDestroy(): void {
-  this.alumnosSubscription?.unsubscribe();
+    this.alumnosSubscription?.unsubscribe();
   }
 }

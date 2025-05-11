@@ -5,13 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PanelModule } from './modules/panel/panel.module';
 
+
+
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, PanelModule
+    AppRoutingModule, PanelModule, 
   ],
   providers: [],
   bootstrap: [AppComponent]

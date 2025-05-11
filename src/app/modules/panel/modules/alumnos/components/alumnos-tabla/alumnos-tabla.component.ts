@@ -9,9 +9,6 @@ import { Alumno } from '../../models/index';
   selector: 'app-alumnos-tabla',
   standalone: false,
   templateUrl: './alumnos-tabla.component.html',
-  styles: `* {
-  }`,
-  
 })
 export class AlumnosTablaComponent {
   displayedColumns: string[] = ['doc', 'alumno' , 'curso', 'acciones' ];

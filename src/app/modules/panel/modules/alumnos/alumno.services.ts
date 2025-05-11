@@ -30,10 +30,6 @@ const alumnos_db: Alumno[] = [
 
 @Injectable( {providedIn: 'root'} )
 export class AlumnoService  {
-    getAlumnos(): Alumno[] { 
-        console.log('trayendo alumnos');
-        return[...alumnos_db];
-    }
 
     // ALUMNOS OBSERVABLE
     
@@ -42,7 +38,7 @@ export class AlumnoService  {
           setTimeout(() => {
             observer.next(alumnos_db); // Emit the data
             observer.complete(); // Complete the observable after emitting the data
-          }, 3000);
+          }, 2000);
 
         });
         return alumnosObservable;

@@ -16,9 +16,15 @@ import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 // IMPORTAMOS LISTA
 import { MatListModule } from '@angular/material/list';
 import { AlumnosModule } from './modules/alumnos/alumnos.module';
+import { CursosModule } from './modules/cursos/cursos.module';
+
+
+
+
+
 
 @NgModule({
-  declarations: [PanelComponent, NavMenuComponent],
+  declarations: [PanelComponent, NavMenuComponent  ], 
   imports: [
     CommonModule,
     PanelRoutingModule,
@@ -28,7 +34,10 @@ import { AlumnosModule } from './modules/alumnos/alumnos.module';
     MatIconModule,
     MatListModule,
     AlumnosModule,
+    CursosModule, 
   ],
   exports: [PanelComponent],
 })
 export class PanelModule {}
+
+//InscripcionesComponent, InscripcionesTablaComponent, CursosTablaComponent, CursosComponent, Cabeceras20Directive
