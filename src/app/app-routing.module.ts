@@ -4,6 +4,7 @@ import { PanelComponent } from './modules/panel/panel.component';
 import { AlumnosComponent } from './modules/panel/modules/alumnos/alumnos.component';
 
 import { CursosComponent } from './modules/panel/modules/cursos/cursos.component';
+import { InscripcionesComponent } from './modules/panel/modules/inscripciones/inscripciones.component';
 
 const routes: Routes = [
 
@@ -20,6 +21,12 @@ const routes: Routes = [
         component: CursosComponent
 
       },
+
+       {
+         path: 'inscripciones',
+         component: InscripcionesComponent
+
+       },
     ]
   },
   { path: '**', redirectTo: '/panel'}
@@ -31,10 +38,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
-//import { InscripcionesComponent } from './modules/panel/modules/inscripciones/inscripciones.component';
 
-      // {
-      //   path: 'inscripciones',
-      //   component: InscripcionesComponent
-
-      // },

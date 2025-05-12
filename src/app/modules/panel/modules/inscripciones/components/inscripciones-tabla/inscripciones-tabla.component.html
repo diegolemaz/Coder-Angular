@@ -1,4 +1,4 @@
-<h1>LISTA DE ALUMNOS</h1>
+<h1>INSCRIPCIONES REALIZADAS</h1>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <!-- Columna Documento -->
@@ -6,21 +6,20 @@
     <th mat-header-cell *matHeaderCellDef appCabeceras20>Documento</th>
     <td mat-cell *matCellDef="let element">{{ element.doc }}</td>
   </ng-container>
-  <!-- Columna Alumno -->
-  <ng-container matColumnDef="alumno">
-    <th mat-header-cell *matHeaderCellDef appCabeceras20>Alumno</th>
-    <td mat-cell *matCellDef="let element">
-      {{ element | alumnoApellidoNombre | titlecase  }}
-    </td>
+ 
+  <!-- Columna Curso ID -->
+  <ng-container matColumnDef="cursoId">
+    <th mat-header-cell *matHeaderCellDef appCabeceras20>Curso ID</th>
+    <td mat-cell *matCellDef="let element">{{ element.cursoId  }}</td>
   </ng-container>
   <!-- Columna Acciones -->
   <ng-container matColumnDef="acciones">
     <th mat-header-cell *matHeaderCellDef appCabeceras20>Acciones</th>
     <td mat-cell *matCellDef="let element">
-      <button (click)="editarAlumno.emit(element)">
+      <button (click)="editarInscripcion.emit(element)">
         <mat-icon>edit</mat-icon>
       </button>
-      <button (click)="borrarAlumno.emit(element.doc)">
+      <button (click)="borrarInscripcion.emit(element.doc)">
         <mat-icon>delete</mat-icon>
       </button>
     </td>
@@ -29,3 +28,4 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
+

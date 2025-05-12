@@ -17,10 +17,7 @@ export class AlumnosComponent {
   estoyEditDoc: number | null = null;
   estoyCargando = false;
 
-  // VALIDACIONES
-
-  //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  // SERVICIO
+  // VALIDACIONES Y SERVICIOS
 
   alumnosSubscription: Subscription | null = null;
 
@@ -33,7 +30,6 @@ export class AlumnosComponent {
       nombre: ['', [Validators.required, Validators.minLength(3)]],
       apellido: ['', [Validators.required, Validators.minLength(3)]],
       doc: ['', [Validators.required, Validators.min(9999), Validators.max(9999999)]],
-      curso: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
 

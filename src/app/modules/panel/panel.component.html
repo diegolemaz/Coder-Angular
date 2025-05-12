@@ -1,24 +1,18 @@
 <!-- TOOLBAR -->
- <div>
-<mat-toolbar>
-  <button (click)="drawer.toggle()" mat-icon-button class="example-icon"
-    aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>CODERHOUSE</span>
-  <span class="example-spacer"></span>
-</mat-toolbar>
+<div>
+  <mat-toolbar>
+    <button type="button"  (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>CODERHOUSE</span>
+    <span class="example-spacer"></span>
+  </mat-toolbar>
 
-<!-- SIDEBAR -->
-<mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-    <app-nav-menu />
-  </mat-drawer>
- 
-  
-    <!--  cambiamos a router outlet -->
-    <!-- <app-alumnos /> -->
+  <!-- SIDEBAR -->
+  <mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+      <app-nav-menu />
+    </mat-drawer>
     <router-outlet></router-outlet>
-
-</mat-drawer-container>
-  </div>
+  </mat-drawer-container>
+</div>

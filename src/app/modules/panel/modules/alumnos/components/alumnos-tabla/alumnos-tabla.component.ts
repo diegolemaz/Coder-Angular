@@ -1,7 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-
-
-import {MatTableModule} from '@angular/material/table';
 import { Alumno } from '../../models/index';
 
 
@@ -11,7 +8,7 @@ import { Alumno } from '../../models/index';
   templateUrl: './alumnos-tabla.component.html',
 })
 export class AlumnosTablaComponent {
-  displayedColumns: string[] = ['doc', 'alumno' , 'curso', 'acciones' ];
+  displayedColumns: string[] = ['doc', 'alumno' , 'acciones' ];
   
   
   // INICIALIZAMOS DATA DEL COMPONENTE PADRE

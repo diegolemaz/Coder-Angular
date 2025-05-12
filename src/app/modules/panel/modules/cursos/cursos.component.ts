@@ -19,15 +19,13 @@ export class CursosComponent {
   estoyEditId: number | null = null;
   estoyCargando = false;
 
-  // VALIDACIONES
+  // VALIDACIONES Y SERVICIO
 
-  //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  // SERVICIO
 
   cursosSubscription: Subscription | null = null;
 
   constructor(private fb: FormBuilder, private cursoService: CursoService) {
-    // this.alumnoService.getAlumnos();
+
 
     this.loadCursosObservable(); // llamando obs
 
@@ -37,7 +35,7 @@ export class CursosComponent {
       });
   }
 
-  // LOAD CURSOS OBS ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  // CARGO CURSOS OBS
   loadCursosObservable() {
     this.estoyCargando = true;
     this.cursosSubscription = this.cursoService.getCursos$().subscribe({
@@ -51,8 +49,7 @@ export class CursosComponent {
     });
   }
 
-  // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
+  
   //ON SUBMIT EDITANDO O AGREGANDO CURSO CON ALERT VALIDACION
   onSubmit() {
     if (this.cursoForm.invalid) {

@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Curso } from '../../models';
-import {MatTableModule} from '@angular/material/table';
 
 @Component({
   selector: 'app-cursos-tabla',
