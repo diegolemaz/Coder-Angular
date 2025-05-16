@@ -1,8 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AlumnosComponent } from './alumnos.component';
 
+
+// lazy desde /panel/alumnos
 
 const routes: Routes = [
+  {
+    path: '', component: AlumnosComponent, 
+
+}
 ];
 
 @NgModule({
