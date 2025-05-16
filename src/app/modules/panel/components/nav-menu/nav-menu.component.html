@@ -1,5 +1,7 @@
 <mat-nav-list class="menu">
-  <a mat-list-item routerLink="/panel/alumnos">ALUMNOS</a>
-  <a mat-list-item routerLink="/panel/cursos">CURSOS</a>
-  <a mat-list-item routerLink="/panel/inscripciones">INSCRIPCIONES</a>
+    
+  <a mat-list-item routerLink="alumnos">ALUMNOS</a>
+  <a mat-list-item routerLink="cursos">CURSOS</a>
+  <a mat-list-item routerLink="inscripciones">INSCRIPCIONES</a>
+  <a mat-list-item (click)="logout()">Cerrar sesión</a>
 </mat-nav-list>
