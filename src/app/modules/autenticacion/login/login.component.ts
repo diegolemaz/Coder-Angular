@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AutenticacionService } from '../../../core/services/autenticacion.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -9,10 +11,28 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-constructor (private router: Router) {}
+  loginForm: FormGroup;
 
+constructor (private router: Router, private autentServ: AutenticacionService, private form: FormBuilder) {
+  this.loginForm = this.form.group({
+    email:['', [Validators.required]],
+    password:['', [Validators.required]],
+  })
+}
+  
 login(){
- localStorage.setItem('token', 'agregando_token_de_login');
- this.router.navigate(['panel'])
+ if (this.loginForm.invalid){
+  alert ('Por favor, ingrese sus datos')
+ } else {
+  const { email, password } = this.loginForm.value;
+  const user = this.autentServ.login(email, password);
+
+  if (user) {
+    this.router.navigate(['panel']);
+  } else {
+    alert('Usuario o contraseña incorrecta');
+  }
+ }
+
 }
 }
