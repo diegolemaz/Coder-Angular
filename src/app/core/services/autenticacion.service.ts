@@ -1,39 +1,57 @@
 import { Injectable } from "@angular/core";
 import { User } from "../models";
+import { HttpClient } from "@angular/common/http";
+import { BehaviorSubject, map, Observable } from "rxjs";
+import { Router } from '@angular/router';
 
-const fake_user: User = {
-    id: 1,
-    nombre: "Manuel Gonzalez",
-    role: "admin",
-    email: "manuel@gonzalez.com",
-    password: "123456",
-    token: "fake_token",
-}
-
-
+// CONSULTA A API REST CON USUARIOS GUARDADOS
 
 @Injectable({ providedIn: 'root' })
 
 export class AutenticacionService {
+    private _autenticacionUser$ = new BehaviorSubject<User | null>(null);
+    autenticacionUser$: Observable<User | null> = this._autenticacionUser$.asObservable();
 
-    login(email: string, password: string): User | boolean {
-        if (email === fake_user.email && password === fake_user.password) {
+    constructor(private http: HttpClient, private router: Router) { }
 
-            localStorage.setItem('token', fake_user.token);
-            return fake_user;
-        }
-        return false;
+    login(email: string, password: string): void {
+        this.http
+            .get<User[]>(`http://localhost:3000/users?email=${email}&password=${password}`)
+            .subscribe({
+                next: (response) => {
+                    const user = response[0];
+                    if (user) {
+                        localStorage.setItem('token', user.token);
+                        this.router.navigate(['/panel']);
+                        this._autenticacionUser$.next(user);
+                    } else {
+                        alert('Usuario o contraseña invalida');
+                    }
+                },
+            });
+
     }
-
-    logout () : void {
+    // BORRA TOKEN
+    logout(): void {
         localStorage.removeItem('token');
+        this._autenticacionUser$.next(null);
     }
-
-    vericarToken(token: string): User | boolean {
+    // VERIFICAR SI ESTA EL TOKEN GUARDADO ESTÁ ACTIVO
+        vericarToken(): Observable<User | boolean> {
         const tokenGuardado = localStorage.getItem('token');
-        if (!tokenGuardado) {
-            return false;
-        }
-        return fake_user;
+        return this.http
+            .get<User[]>(`http://localhost:3000/users?token=${tokenGuardado}`)
+            .pipe(
+                map((response) => {
+                    const user = response[0];
+                    if (user) {
+                        localStorage.setItem('token', user.token);
+                        this._autenticacionUser$.next(user);
+                        return user;
+                    } else {
+                        return false;
+                    }
+                })
+            );
     }
 }
