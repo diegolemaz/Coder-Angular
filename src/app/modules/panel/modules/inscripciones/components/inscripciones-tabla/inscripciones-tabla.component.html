@@ -16,7 +16,7 @@
   <ng-container matColumnDef="acciones">
     <th mat-header-cell *matHeaderCellDef appCabeceras20>Acciones</th>
     <td mat-cell *matCellDef="let element">
-      <button (click)="editarInscripcion.emit(element)">
+      <button [disabled]="(autUsuario$|async) ?.role != 'admin'" (click)="editarInscripcion.emit(element)">
         <mat-icon>edit</mat-icon>
       </button>
       <button (click)="borrarInscripcion.emit(element.id)">

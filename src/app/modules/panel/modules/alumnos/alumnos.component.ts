@@ -3,7 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Alumno } from './models/index';
 import { AlumnoService } from './alumno.services';
-import { first, Subscription, take } from 'rxjs';
+import { first, Observable, Subscription, take } from 'rxjs';
+import { AutenticacionService } from '../../../../core/services/autenticacion.service';
+import { User } from '../../../../core/models';
 
 @Component({
   selector: 'app-alumnos',
@@ -16,15 +18,20 @@ export class AlumnosComponent {
   alumnosData: Alumno[] = [];
   estoyEditDoc: number | null = null;
   estoyCargando = false;
+// PARA DESHABILITAR FORM
+   autUsuario$: Observable<User | null>;
 
   // VALIDACIONES Y SERVICIOS
 
   alumnosSubscription: Subscription | null = null;
 
-  constructor(private fb: FormBuilder, private alumnoService: AlumnoService) {
+  constructor(private fb: FormBuilder, private alumnoService: AlumnoService, private autServ: AutenticacionService) {
     // this.alumnoService.getAlumnos();
 
     this.loadAlumnosObservable(); // llamando obs
+    
+    // PARA DESHABILITAR FORM
+    this.autUsuario$ = this.autServ.autenticacionUser$;
 
     this.alumnoForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.minLength(3)]],
@@ -90,4 +97,6 @@ export class AlumnosComponent {
   ngOnDestroy(): void {
     this.alumnosSubscription?.unsubscribe();
   }
+
 }
+

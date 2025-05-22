@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Curso } from './models';
-import { first, Subscription, take } from 'rxjs';
+import { first, Observable, Subscription, take } from 'rxjs';
 import { CursoService } from './curso.service';
+import { AutenticacionService } from '../../../../core/services/autenticacion.service';
+import { User } from '../../../../core/models';
 
 @Component({
   selector: 'app-cursos',
@@ -19,15 +21,21 @@ export class CursosComponent {
   estoyEditId: number | null = null;
   estoyCargando = false;
 
+  // PARA DESHABILITAR FORM
+     autUsuario$: Observable<User | null>;
+
   // VALIDACIONES Y SERVICIO
 
 
   cursosSubscription: Subscription | null = null;
 
-  constructor(private fb: FormBuilder, private cursoService: CursoService) {
+  constructor(private fb: FormBuilder, private cursoService: CursoService, private autServ: AutenticacionService) {
 
 
     this.loadCursosObservable(); // llamando obs
+
+      // PARA DESHABILITAR FORM
+    this.autUsuario$ = this.autServ.autenticacionUser$;
 
     this.cursoForm = this.fb.group({
       id: ['', [Validators.required]],
