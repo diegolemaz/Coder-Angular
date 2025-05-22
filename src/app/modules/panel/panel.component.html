@@ -1,12 +1,18 @@
 <!-- TOOLBAR -->
 <div>
-  <mat-toolbar>
+   <mat-toolbar>
+    <div class="d-flex align-items-center w-100 justify-content-between">
+    <div>
     <button type="button"  (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
     </button>
     <span>CODER+HOUSE</span>
     <span class="example-spacer"></span>
-  </mat-toolbar>
+    </div>
+    <div *ngIf="autUsuario$|async; let user">{{user.nombre +' / ' + user.role  }}</div>
+</div>
+  </mat-toolbar> 
+ 
 
   <!-- SIDEBAR -->
   <mat-drawer-container class="example-container" autosize>

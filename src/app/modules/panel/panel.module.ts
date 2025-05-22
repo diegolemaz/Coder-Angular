@@ -40,4 +40,3 @@ import { InscripcionesModule } from './modules/inscripciones/inscripciones.modul
 })
 export class PanelModule {}
 
-//InscripcionesComponent, InscripcionesTablaComponent, CursosTablaComponent, CursosComponent, Cabeceras20Directive
