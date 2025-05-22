@@ -71,10 +71,12 @@ export class CursosComponent {
     }
   }
 
-  // BORRAR CURSO
+  // BORRAR CURSO ADAPTADO HTTP
   onBorrarCurso(id: number) {
     if (confirm('Estas seguro que quieres eliminar el curso?')) {
-      this.cursosData = this.cursosData.filter((cur) => cur.id !== id);
+      this.cursoService.borrarCurso(id.toString()).subscribe({
+        next: (res) => { this.cursosData = res}
+      })
     }
   }
 

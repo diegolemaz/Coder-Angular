@@ -1,24 +1,246 @@
 {
     "users": [
-        {   
-        "id": "1",
-        "name": "Manuel Gonzalez",
-        "role": "admin",
-        "email": "manuel@gonzalez.com",
-        "password": "123456",
-        "token": "fake_mg_token"
+        {
+            "id": "1",
+            "nombre": "Manuel Gonzalez",
+            "role": "admin",
+            "email": "manuel@gonzalez.com",
+            "password": "123456",
+            "token": "fake_mg_token"
         },
-
-              {   
-        "id": "2",
-        "name": "Daniel Cardona",
-        "role": "limited",
-        "email": "daniel@cardona.com",
-        "password": "123456",
-        "token": "fake_dc_token"
+        {
+            "id": "2",
+            "nombre": "Daniel Cardona",
+            "role": "user",
+            "email": "daniel@cardona.com",
+            "password": "123456",
+            "token": "fake_dc_token"
         }
     ],
-    "students": [],
-    "courses": [],
-    "inscriptions": []
+    "students": [
+        {
+            "id": "1",
+            "doc": "678564",
+            "nombre": "Maria",
+            "apellido": "Melendez"
+        },
+        {
+            "id": "2",
+            "doc": "752435",
+            "nombre": "Gaston",
+            "apellido": "Martinez"
+        },
+        {
+            "id": "3",
+            "doc": "353990",
+            "nombre": "Marcelo",
+            "apellido": "Perez"
+        },
+        {
+            "id": "4",
+            "doc": "847897",
+            "nombre": "Juliana",
+            "apellido": "Mendez"
+        },
+        {
+            "id": "5",
+            "doc": "396735",
+            "nombre": "Romina",
+            "apellido": "Franchi"
+        },
+        {
+            "id": "6",
+            "doc": "855756",
+            "nombre": "Jorge",
+            "apellido": "Mestoy"
+        },
+        {
+            "id": "7",
+            "doc": "506783",
+            "nombre": "Gustavo",
+            "apellido": "Madrin"
+        },
+        {
+            "id": "8",
+            "doc": "506123",
+            "nombre": "Solana",
+            "apellido": "Rodriguez"
+        },
+        {
+            "id": "9",
+            "doc": "590704",
+            "nombre": "Pablo",
+            "apellido": "Benitez"
+        },
+        {
+            "id": "10",
+            "doc": "647554",
+            "nombre": "Sergio",
+            "apellido": "Perez"
+        },
+        {
+            "id": "11",
+            "doc": "647546",
+            "nombre": "Ramiro",
+            "apellido": "Gonzalez"
+        },
+        {
+            "id": "12",
+            "doc": "645546",
+            "nombre": "Adriana",
+            "apellido": "Ramirez"
+        },
+        {
+            "id": "13",
+            "doc": "647222",
+            "nombre": "Micaela",
+            "apellido": "Marquez"
+        },
+        {
+            "id": "14",
+            "doc": "287323",
+            "nombre": "Juan",
+            "apellido": "Gonzalez"
+        },
+        {
+            "id": "15",
+            "doc": "762323",
+            "nombre": "Ramon",
+            "apellido": "Marquez"
+        }
+    ],
+    "courses": [
+        {
+            "id": "1",
+            "cursoId": "1",
+            "desc": "Angular"
+        },
+        {
+            "id": "2",
+            "cursoId": "2",
+            "desc": "React Js"
+        },
+        {
+            "id": "3",
+            "cursoId": "3",
+            "desc": "JavaScript"
+        },
+        {
+            "id": "4",
+            "cursoId": "4",
+            "desc": "Diseño Web"
+        },
+        {
+            "id": "5",
+            "cursoId": "5",
+            "desc": "Typescript"
+        },
+        {
+            "id": "6",
+            "cursoId": "6",
+            "desc": "Vue JS"
+        },
+        {
+            "id": "7",
+            "cursoId": "7",
+            "desc": "Backend 1"
+        },
+        {
+            "id": "8",
+            "cursoId": "8",
+            "desc": "Backend 2"
+        },
+        {
+            "id": "9",
+            "cursoId": "9",
+            "desc": "Backend 3"
+        },
+        {
+            "id": "10",
+            "cursoId": "10",
+            "desc": "Javascript"
+        },
+        {
+            "id": "11",
+            "cursoId": "11",
+            "desc": "Marketing"
+        }
+    ],
+    "inscriptions": [
+        {
+            "id": "1",
+            "doc": "232323",
+            "cursoId": "1"
+        },
+        {
+            "id": "2",
+            "doc": "232323",
+            "cursoId": "5"
+        },
+        {
+            "id": "3",
+            "doc": "678564",
+            "cursoId": "2"
+        },
+        {
+            "id": "4",
+            "doc": "678564",
+            "cursoId": "6"
+        },
+        {
+            "id": "5",
+            "doc": "752435",
+            "cursoId": "3"
+        },
+        {
+            "id": "6",
+            "doc": "752435",
+            "cursoId": "10"
+        },
+        {
+            "id": "7",
+            "doc": "353990",
+            "cursoId": "4"
+        },
+        {
+            "id": "8",
+            "doc": "847897",
+            "cursoId": "1"
+        },
+        {
+            "id": "9",
+            "doc": "396735",
+            "cursoId": "2"
+        },
+        {
+            "id": "10",
+            "doc": "855756",
+            "cursoId": "3"
+        },
+        {
+            "id": "11",
+            "doc": "506783",
+            "cursoId": "11"
+        },
+        {
+            "id": "12",
+            "doc": "506123",
+            "cursoId": "11"
+        },
+        {
+            "id": "13",
+            "doc": "590704",
+            "cursoId": "2"
+        },
+        {
+            "id": "14",
+            "doc": "647546",
+            "cursoId": "1"
+        },
+        {
+            "id": "15",
+            "doc": "647546",
+            "cursoId": "7"
+        }
+    ]
 }

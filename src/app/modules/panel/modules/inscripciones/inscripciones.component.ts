@@ -68,11 +68,13 @@ export class InscripcionesComponent {
     }
   }
 
-  // BORRAR INSCRIPCION
-  onBorrarInscripcion(docu: number) {
+  // BORRAR INSCRIPCION ADAPTADA HTTP
+  onBorrarInscripcion(id: number | string) {
     if (confirm('Estas seguro que quieres eliminar la inscripcion?')) {
-      this.inscripcionesData = this.inscripcionesData.filter((insc) => insc.doc !== docu);
-    }
+      this.inscripcionService.borrarInscripcion(id.toString()).subscribe({
+        next: (res) => { this.inscripcionesData = res}
+    })
+  }
   }
 
   // EDITAR INSCRIPCION

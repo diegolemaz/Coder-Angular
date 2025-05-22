@@ -70,10 +70,13 @@ export class AlumnosComponent {
     }
   }
 
-  // BORRAR ALUMNO
-  onBorrarAlumno(docu: number) {
+  // BORRAR ALUMNO ADAPTADA HTTP
+  onBorrarAlumno(id: number | string) {
     if (confirm('Estas seguro que quieres eliminar el alumno?')) {
-      this.alumnosData = this.alumnosData.filter((alu) => alu.doc !== docu);
+      this.alumnoService.borrarAlumno(id.toString()).subscribe({
+        next: (res) => { this.alumnosData = res}
+      }
+      )
     }
   }
 
