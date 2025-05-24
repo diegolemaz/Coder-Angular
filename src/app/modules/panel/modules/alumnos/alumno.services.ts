@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 
-import { concatMap, Observable } from "rxjs";
-import { Alumno } from './models/index';
+import { concatMap, map, Observable, Subscription } from 'rxjs';
+import { Alumno, AlumnoForm } from './models/index';
 import { HttpClient } from "@angular/common/http";
 
 
@@ -11,7 +11,8 @@ export class AlumnoService  {
 
 // GET ALUMNOS Y BORRARALUMNO HTTP
 
-    getAlumnos$(): Observable<Alumno[]> { return this.http.get<Alumno[]>(`http://localhost:3000/students`)
+    getAlumnos$(): Observable<Alumno[]> { 
+      return this.http.get<Alumno[]>(`http://localhost:3000/students`)
     }
 
     borrarAlumno(id: string): Observable<Alumno[]>{
@@ -20,11 +21,16 @@ export class AlumnoService  {
       .pipe(concatMap(() => this.getAlumnos$()));
     }
 
-    
-    agregarAlumno(id: string): Observable<Alumno[]>{
+    // AGREGAR ALUMNO HTTP
+    agregarAlumno(alumno : AlumnoForm): Observable<Alumno>{
       return this.http
-      .delete<Alumno[]>(`http://localhost:3000/students/${id}`)
-      .pipe(concatMap(() => this.getAlumnos$()));
+      .post<Alumno>(`http://localhost:3000/students/`, alumno);
+    }
+
+    // EDITAR ALUMNO HTTP
+    editarAlumno(id: string, alumno: AlumnoForm): Observable<Alumno> {
+      return this.http
+      .put<Alumno>(`http://localhost:3000/students/${id}`, alumno);
     }
 }
 

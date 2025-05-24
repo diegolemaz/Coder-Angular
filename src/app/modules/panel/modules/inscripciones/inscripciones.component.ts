@@ -14,7 +14,7 @@ export class InscripcionesComponent {
 
   inscripcionForm: FormGroup;
   inscripcionesData: Inscripcion[] = [];
-  estoyEditDoc: number | null = null;
+  estoyEditId: number | null = null;
   estoyCargando = false;
 
   // VALIDACIONES Y SERV
@@ -27,12 +27,12 @@ export class InscripcionesComponent {
     this.loadInscripcionesObservable(); // llamando obs
 
     this.inscripcionForm = this.fb.group({
-      doc: ['', [Validators.required, Validators.min(9999), Validators.max(9999999)]],
-      cursoId: ['', [Validators.required]],
+      doc: ['', [Validators.required, Validators.pattern('[0-9]+'), Validators.min(9999), Validators.max(9999999)]],
+      cursoId: ['', [Validators.required, Validators.pattern('[0-9]+')]],
     });
   }
 
-  // ALUMNOS OBS
+  // LOAD insc OBS
   loadInscripcionesObservable() {
     this.estoyCargando = true;
     this.inscripcionesSubscription = this.inscripcionService.getInscripciones$().subscribe({
@@ -47,27 +47,30 @@ export class InscripcionesComponent {
   }
 
   
-  //ON SUBMIT EDITANDO O AGREGANDO INSC CON ALERT VALIDACION
+  //ON SUBMIT EDITANDO O AGREGANDO INSC CON ALERT VALIDACION ADAPTADA HTTP
   onSubmit() {
     if (this.inscripcionForm.invalid) {
       alert('Hay errores en el formulario de inscripcion');
     } else {
-      if (this.estoyEditDoc) {
-        this.inscripcionesData = this.inscripcionesData.map((insc) =>
-          insc.doc === this.estoyEditDoc
-            ? { ...insc, ...this.inscripcionForm.value }
-            : insc
-        );
+      if (this.estoyEditId) {       
+        this.inscripcionService.editarInscripcion(this.estoyEditId.toString(),this.inscripcionForm.value).subscribe({
+          next: (res) => {    
+            this.inscripcionesData = [...this.inscripcionesData.filter((insc) => insc.id != res.id), res]
+            this.estoyEditId = null;
+          }
+        });
       } else {
-        // SI NO ESTOY EDITANDO, AGREGAR NUEVA INSC
-        this.inscripcionesData = [...this.inscripcionesData, this.inscripcionForm.value];
-        this.estoyEditDoc = null;
+        // SI NO ESTOY EDITANDO, AGREGAR NUEVO PRODUCTO ADAPTADA HTTP
+        this.inscripcionService.agregarInscripcion(this.inscripcionForm.value).subscribe({
+          next: (res) => {
+            this.inscripcionesData = [...this.inscripcionesData, res]
+          }
+        });  
       }
       this.inscripcionForm.reset();
-      this.estoyEditDoc = null;
     }
+    
   }
-
   // BORRAR INSCRIPCION ADAPTADA HTTP
   onBorrarInscripcion(id: number | string) {
     if (confirm('Estas seguro que quieres eliminar la inscripcion?')) {
@@ -79,7 +82,7 @@ export class InscripcionesComponent {
 
   // EDITAR INSCRIPCION
   onEditarInscripcion(insc: Inscripcion) {
-    this.estoyEditDoc = insc.doc;
+    this.estoyEditId = insc.id;
     this.inscripcionForm.patchValue(insc);
   }
 

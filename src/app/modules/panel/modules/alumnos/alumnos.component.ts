@@ -16,7 +16,7 @@ import { User } from '../../../../core/models';
 export class AlumnosComponent {
   alumnoForm: FormGroup;
   alumnosData: Alumno[] = [];
-  estoyEditDoc: number | null = null;
+  estoyEditId: number | null = null;
   estoyCargando = false;
 // PARA DESHABILITAR FORM
    autUsuario$: Observable<User | null>;
@@ -26,8 +26,7 @@ export class AlumnosComponent {
   alumnosSubscription: Subscription | null = null;
 
   constructor(private fb: FormBuilder, private alumnoService: AlumnoService, private autServ: AutenticacionService) {
-    // this.alumnoService.getAlumnos();
-
+  
     this.loadAlumnosObservable(); // llamando obs
     
     // PARA DESHABILITAR FORM
@@ -36,7 +35,7 @@ export class AlumnosComponent {
     this.alumnoForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.minLength(3)]],
       apellido: ['', [Validators.required, Validators.minLength(3)]],
-      doc: ['', [Validators.required, Validators.min(9999), Validators.max(9999999)]],
+      doc: ['', [Validators.required, Validators.pattern('[0-9]+'), Validators.min(9999), Validators.max(9999999)]],
     });
   }
 
@@ -56,25 +55,29 @@ export class AlumnosComponent {
 
   // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-  //ON SUBMIT EDITANDO O AGREGANDO ALUMNO CON ALERT VALIDACION
+  //ON SUBMIT EDITANDO O AGREGANDO ALUMNO CON ALERT VALIDACION ADAPTADA HTTP
   onSubmit() {
     if (this.alumnoForm.invalid) {
       alert('Hay errores en el formulario');
     } else {
-      if (this.estoyEditDoc) {
-        this.alumnosData = this.alumnosData.map((alu) =>
-          alu.doc === this.estoyEditDoc
-            ? { ...alu, ...this.alumnoForm.value }
-            : alu
-        );
+      if (this.estoyEditId) {       
+        this.alumnoService.editarAlumno(this.estoyEditId.toString(),this.alumnoForm.value).subscribe({
+          next: (res) => {    
+            this.alumnosData = [...this.alumnosData.filter((alu) => alu.id != res.id), res]
+            this.estoyEditId = null;
+          }
+        });
       } else {
-        // SI NO ESTOY EDITANDO, AGREGAR NUEVO PRODUCTO
-        this.alumnosData = [...this.alumnosData, this.alumnoForm.value];
-        this.estoyEditDoc = null;
+        // SI NO ESTOY EDITANDO, AGREGAR NUEVO PRODUCTO ADAPTADA HTTP
+        this.alumnoService.agregarAlumno(this.alumnoForm.value).subscribe({
+          next: (res) => {
+            this.alumnosData = [...this.alumnosData, res]
+          }
+        });  
       }
       this.alumnoForm.reset();
-      this.estoyEditDoc = null;
     }
+    
   }
 
   // BORRAR ALUMNO ADAPTADA HTTP
@@ -89,7 +92,7 @@ export class AlumnosComponent {
 
   // EDITAR ALUMNO
   onEditarAlumno(alu: Alumno) {
-    this.estoyEditDoc = alu.doc;
+    this.estoyEditId = alu.id;   
     this.alumnoForm.patchValue(alu);
   }
 

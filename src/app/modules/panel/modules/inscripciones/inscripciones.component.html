@@ -11,17 +11,17 @@
         <div class="col">
           <mat-form-field>
             <mat-label>Documento</mat-label>
-            <input matInput class="w-100" id="doc" type="number" formControlName="doc" />
+            <input matInput class="w-100" id="doc" type="text" formControlName="doc" />
           </mat-form-field>
         </div>
              <div class="col">
             <mat-form-field>
             <mat-label>Curso ID</mat-label>
-            <input matInput class="w-100" id="cursoId" type="number" formControlName="cursoId" />
+            <input matInput class="w-100" id="cursoId" type="text" formControlName="cursoId" />
           </mat-form-field>
         </div>
         <div class="col">
-          <button mat-stroked-button type="submit" class=" w-100">{{estoyEditDoc ? 'Editar': 'Agregar'}}</button>
+          <button mat-stroked-button type="submit" class=" w-100">{{estoyEditId ? 'Editar': 'Agregar'}}</button>
         </div>
       </div>
     </form>

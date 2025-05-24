@@ -19,10 +19,10 @@
   ],
   "students": [
     {
-      "id": "2",
+      "nombre": "Gaston ed",
+      "apellido": "Martinez ed",
       "doc": "752435",
-      "nombre": "Gaston",
-      "apellido": "Martinez"
+      "id": "2"
     },
     {
       "id": "3",
@@ -55,10 +55,10 @@
       "apellido": "Madrin"
     },
     {
-      "id": "8",
-      "doc": "506123",
       "nombre": "Solana",
-      "apellido": "Rodriguez"
+      "apellido": "Rodriguez",
+      "doc": "506123",
+      "id": "8"
     },
     {
       "id": "9",
@@ -91,16 +91,40 @@
       "apellido": "Marquez"
     },
     {
-      "id": "14",
-      "doc": "287323",
       "nombre": "Juan",
-      "apellido": "Gonzalez"
+      "apellido": "Gonzalez",
+      "doc": "287323",
+      "id": "14"
     },
     {
-      "id": "15",
+      "nombre": "Ramon editado 2",
+      "apellido": "Marquez editado 2",
       "doc": "762323",
-      "nombre": "Ramon",
-      "apellido": "Marquez"
+      "id": "15"
+    },
+    {
+      "nombre": "ewrewre",
+      "apellido": "erere",
+      "doc": "55555",
+      "id": "6640"
+    },
+    {
+      "nombre": "frgffgfg 4",
+      "apellido": "fgfg 4",
+      "doc": "232232",
+      "id": "2bef"
+    },
+    {
+      "id": "e217",
+      "nombre": "dccdxd",
+      "apellido": "cdcdcd",
+      "doc": "23423"
+    },
+    {
+      "nombre": "nuevo",
+      "apellido": "nuevo",
+      "doc": "3443435",
+      "id": "b186"
     }
   ],
   "courses": [
@@ -155,9 +179,24 @@
       "desc": "Javascript"
     },
     {
-      "id": "11",
-      "cursoId": "11",
-      "desc": "Marketing"
+      "id": "33",
+      "desc": "rffgfgf"
+    },
+    {
+      "id": "14",
+      "desc": "dsdsdssd"
+    },
+    {
+      "id": "15",
+      "desc": "dfddfdf editado"
+    },
+    {
+      "id": "16",
+      "desc": "fdfdfdfgfgh"
+    },
+    {
+      "id": "44",
+      "desc": "ttt"
     }
   ],
   "inscriptions": [
@@ -227,14 +266,9 @@
       "cursoId": "2"
     },
     {
-      "id": "14",
       "doc": "647546",
-      "cursoId": "1"
-    },
-    {
-      "id": "15",
-      "doc": "647546",
-      "cursoId": "7"
+      "cursoId": "2",
+      "id": "14"
     }
   ]
 }

@@ -38,7 +38,7 @@ export class CursosComponent {
     this.autUsuario$ = this.autServ.autenticacionUser$;
 
     this.cursoForm = this.fb.group({
-      id: ['', [Validators.required]],
+      id: ['', [Validators.required, Validators.pattern('[0-9]+')]],
       desc: ['', [Validators.required, Validators.minLength(3)]]
       });
   }
@@ -58,29 +58,34 @@ export class CursosComponent {
   }
 
   
-  //ON SUBMIT EDITANDO O AGREGANDO CURSO CON ALERT VALIDACION
-  onSubmit() {
+  //ON SUBMIT EDITANDO O AGREGANDO CURSO CON ALERT VALIDACION ADAPTADA HTTP
+    onSubmit() {
     if (this.cursoForm.invalid) {
-      alert('Hay errores en el formulario de curso');
+      alert('Hay errores en el formulario');
     } else {
-      if (this.estoyEditId) {
-        this.cursosData = this.cursosData.map((cur) =>
-          cur.id === this.estoyEditId
-            ? { ...cur, ...this.cursoForm.value }
-            : cur
-        );
+      if (this.estoyEditId) {       
+        this.cursoService.editarCurso(this.estoyEditId.toString(),this.cursoForm.value).subscribe({
+          next: (res) => {    
+            this.cursosData = [...this.cursosData.filter((cur) => cur.id != res.id), res]
+            this.estoyEditId = null;
+          }
+        });
       } else {
-        // SI NO ESTOY EDITANDO, AGREGAR NUEVO CURSO
-        this.cursosData = [...this.cursosData, this.cursoForm.value];
-        this.estoyEditId = null;
+        // SI NO ESTOY EDITANDO, AGREGAR NUEVO PRODUCTO ADAPTADA HTTP
+        this.cursoService.agregarCurso(this.cursoForm.value).subscribe({
+          next: (res) => {
+            this.cursosData = [...this.cursosData, res]
+          }
+        });  
       }
       this.cursoForm.reset();
-      this.estoyEditId = null;
     }
+    
   }
 
+
   // BORRAR CURSO ADAPTADO HTTP
-  onBorrarCurso(id: number) {
+  onBorrarCurso(id: number | string) {
     if (confirm('Estas seguro que quieres eliminar el curso?')) {
       this.cursoService.borrarCurso(id.toString()).subscribe({
         next: (res) => { this.cursosData = res}
