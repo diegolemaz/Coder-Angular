@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { adminGuard } from '../../core/guards/admin.guard';
 
 // lazy desde /panel
 
@@ -15,7 +16,7 @@ const routes: Routes = [
   path: 'inscripciones', loadChildren: () => import('./modules/inscripciones/inscripciones.module').then((m) => m.InscripcionesModule),
   },
 
-  {path: 'usuarios', loadChildren: () => import('./modules/usuarios/usuarios.module').then((m) => m.UsuariosModule),
+  {path: 'usuarios', canActivate: [adminGuard],  loadChildren: () => import('./modules/usuarios/usuarios.module').then((m) => m.UsuariosModule),
   },
 ];
 

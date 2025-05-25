@@ -12,7 +12,7 @@
       "nombre": "Daniel Cardona",
       "email": "daniel@cardona.com",
       "password": "123456",
-      "role": "admin",
+      "role": "user",
       "id": "2",
       "token": "fake_dc_token"
     },
