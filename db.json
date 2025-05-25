@@ -9,12 +9,19 @@
       "token": "fake_mg_token"
     },
     {
-      "id": "2",
       "nombre": "Daniel Cardona",
-      "role": "user",
       "email": "daniel@cardona.com",
       "password": "123456",
+      "role": "admin",
+      "id": "2",
       "token": "fake_dc_token"
+    },
+    {
+      "nombre": "diego",
+      "email": "lema",
+      "password": "123456",
+      "role": "admin",
+      "id": "c885"
     }
   ],
   "students": [
