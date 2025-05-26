@@ -33,9 +33,9 @@ export class UsuariosComponent {
 
     this.usuarioForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.minLength(3),Validators.email]],
       password: ['', [Validators.required, Validators.minLength(3)]],
-      role: ['', [Validators.required, Validators.minLength(3)]],
+      role: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/^(admin|user)$/)]],
     });
   }
 
@@ -60,8 +60,14 @@ export class UsuariosComponent {
     if (this.usuarioForm.invalid) {
       alert('Hay errores en el formulario');
     } else {
+      
+      // CREANDO FAKE
+      const fakeToken = btoa(Math.random().toString(36).substring(2) + Date.now().toString(36));
+      const usuarioDataToken = {...this.usuarioForm.value, "token": fakeToken};
+
+
       if (this.estoyEditId) {       
-        this.usuarioService.editarUsuario(this.estoyEditId.toString(),this.usuarioForm.value).subscribe({
+        this.usuarioService.editarUsuario(this.estoyEditId.toString(),usuarioDataToken).subscribe({
           next: (res) => {    
             this.usuariosData = [...this.usuariosData.filter((alu) => alu.id != res.id), res]
             this.estoyEditId = null;
@@ -69,7 +75,7 @@ export class UsuariosComponent {
         });
       } else {
         // SI NO ESTOY EDITANDO, AGREGAR NUEVO PRODUCTO ADAPTADA HTTP
-        this.usuarioService.agregarUsuario(this.usuarioForm.value).subscribe({
+        this.usuarioService.agregarUsuario(usuarioDataToken).subscribe({
           next: (res) => {
             this.usuariosData = [...this.usuariosData, res]
           }

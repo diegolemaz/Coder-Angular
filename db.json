@@ -9,19 +9,28 @@
       "token": "fake_mg_token"
     },
     {
-      "nombre": "Daniel Cardona",
+      "nombre": "Daniel Cardona editado",
       "email": "daniel@cardona.com",
       "password": "123456",
       "role": "user",
-      "id": "2",
-      "token": "fake_dc_token"
+      "token": "eDN2ZnliODZ1ZXFtYjRlY3U5aQ==",
+      "id": "2"
     },
     {
+      "id": "d602",
+      "nombre": "arturo benitez",
+      "email": "arturo@benitez.com",
+      "password": "123456",
+      "role": "user",
+      "token": "eWFjdm14bnY3c3JtYjRlY2dneg=="
+    },
+    {
+      "id": "0025",
       "nombre": "diego",
-      "email": "lema",
+      "email": "diego@lema.com",
       "password": "123456",
       "role": "admin",
-      "id": "c885"
+      "token": "N3hxbXIza2w2MWZtYjRmM2pkcA=="
     }
   ],
   "students": [
