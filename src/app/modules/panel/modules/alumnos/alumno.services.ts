@@ -32,5 +32,10 @@ export class AlumnoService  {
       return this.http
       .put<Alumno>(`http://localhost:3000/students/${id}`, alumno);
     }
+
+    // TRAER ALUMNO POR DOC
+    getAlumnoById(id: string | null): Observable<Alumno | null> {
+      return this.http.get<Alumno>(`http://localhost:3000/students/${id}`)
+    }
 }
 

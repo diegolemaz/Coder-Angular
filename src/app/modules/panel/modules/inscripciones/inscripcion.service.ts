@@ -30,4 +30,8 @@ export class InscripcionService {
       return this.http
       .put<Inscripcion>(`http://localhost:3000/inscriptions/${id}`, inscripcion);
     }
+
+    // TRAER INSCRIPCIONES DE UN DOC
+    getInscripcionesDoc(doc: string): Observable<Inscripcion[] >{ return this.http.get<Inscripcion[]>(`http://localhost:3000/inscriptions?doc=${doc}`)
   }
+}

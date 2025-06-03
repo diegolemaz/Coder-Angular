@@ -1,0 +1,36 @@
+@if (!(alumno$ | async)) {
+    <h1>Aluno no encontrado.</h1>
+}
+@else {
+    <h1>Inscripciones de {{ (alumno$ | async)?.nombre }} {{ (alumno$ | async)?.apellido }}</h1>
+}
+
+@if (!(inscripcion$ | async))
+{
+    <p>No se encontraron inscripciones</p>
+}
+@else {
+
+    <div>
+<table  mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!-- Columna ID -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let inscripcion"> {{ inscripcion.id }} </td>
+  </ng-container>
+
+  <!-- Columna cursoId -->
+  <ng-container matColumnDef="cursoId">
+    <th mat-header-cell *matHeaderCellDef> cursoId </th>
+    <td mat-cell *matCellDef="let inscripcion"> {{ inscripcion.cursoId }} </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+</div>
+
+}

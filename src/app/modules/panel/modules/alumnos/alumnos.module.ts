@@ -21,6 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 //IMPORTAMOS ICONOS
 import { MatIconModule } from '@angular/material/icon';
 import { AlumnoApellidoNombrePipe } from './pipes/alumno-apellido-nombre.pipe';
+import { AlumnosDetalleComponent } from './pages/alumnos-detalle/alumnos-detalle.component';
 
 
 
@@ -29,6 +30,7 @@ import { AlumnoApellidoNombrePipe } from './pipes/alumno-apellido-nombre.pipe';
     AlumnosComponent,
     AlumnosTablaComponent,
     AlumnoApellidoNombrePipe,
+    AlumnosDetalleComponent,
     
   ],
   imports: [
