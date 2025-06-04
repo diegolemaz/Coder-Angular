@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { InscripcionService } from './inscripcion.service';
 
+
+
 @Component({
   selector: 'app-inscripciones',
   standalone: false,
@@ -21,14 +23,15 @@ export class InscripcionesComponent {
 
   inscripcionesSubscription: Subscription | null = null;
 
+
   constructor(private fb: FormBuilder, private inscripcionService: InscripcionService) {
 
 
     this.loadInscripcionesObservable(); // llamando obs
 
     this.inscripcionForm = this.fb.group({
-      doc: ['', [Validators.required, Validators.pattern('[0-9]+'), Validators.min(9999), Validators.max(9999999)]],
-      cursoId: ['', [Validators.required, Validators.pattern('[0-9]+')]],
+      studentId: ['', [Validators.required]],
+      courseId: ['', [Validators.required]],
     });
   }
 
@@ -42,42 +45,47 @@ export class InscripcionesComponent {
       error: (error) => console.error(error),
       complete: () => {
         this.estoyCargando = false;
+
       },
     });
   }
 
-  
-  //ON SUBMIT EDITANDO O AGREGANDO INSC CON ALERT VALIDACION ADAPTADA HTTP
+
+  //ON SUBMIT EDITANDO O AGREGANDO INSC CON ALERT VALIDACION ADAPTADA HTTP Y ACTUALIZA TABLA
   onSubmit() {
     if (this.inscripcionForm.invalid) {
       alert('Hay errores en el formulario de inscripcion');
     } else {
-      if (this.estoyEditId) {       
-        this.inscripcionService.editarInscripcion(this.estoyEditId.toString(),this.inscripcionForm.value).subscribe({
-          next: (res) => {    
-            this.inscripcionesData = [...this.inscripcionesData.filter((insc) => insc.id != res.id), res]
+      if (this.estoyEditId) {
+        this.inscripcionService.editarInscripcion(this.estoyEditId.toString(), this.inscripcionForm.value).subscribe({
+          next: () => {
+            this.inscripcionService.getInscripciones$().subscribe((inscripciones) => {
+              this.inscripcionesData = inscripciones; //ACTUALIZA LA TABLA
+            });
             this.estoyEditId = null;
           }
         });
       } else {
         // SI NO ESTOY EDITANDO, AGREGAR NUEVO PRODUCTO ADAPTADA HTTP
         this.inscripcionService.agregarInscripcion(this.inscripcionForm.value).subscribe({
-          next: (res) => {
-            this.inscripcionesData = [...this.inscripcionesData, res]
+          next: () => {
+            this.inscripcionService.getInscripciones$().subscribe((inscripciones) => {
+              this.inscripcionesData = inscripciones;  //ACTUALIZA LA TABLA
+            });
           }
-        });  
+        });
       }
       this.inscripcionForm.reset();
     }
-    
   }
+  
   // BORRAR INSCRIPCION ADAPTADA HTTP
   onBorrarInscripcion(id: number | string) {
     if (confirm('Estas seguro que quieres eliminar la inscripcion?')) {
       this.inscripcionService.borrarInscripcion(id.toString()).subscribe({
-        next: (res) => { this.inscripcionesData = res}
-    })
-  }
+        next: (res) => { this.inscripcionesData = res }
+      })
+    }
   }
 
   // EDITAR INSCRIPCION

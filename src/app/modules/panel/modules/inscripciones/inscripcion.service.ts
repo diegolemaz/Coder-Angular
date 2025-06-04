@@ -12,7 +12,7 @@ export class InscripcionService {
 
   // GET INSCRIPCIONES  Y BORRAR HTTP
 
-  getInscripciones$(): Observable<Inscripcion[]>{ return this.http.get<Inscripcion[]>(`http://localhost:3000/inscriptions`)
+  getInscripciones$(): Observable<Inscripcion[]>{ return this.http.get<Inscripcion[]>(`http://localhost:3000/inscriptions?_embed=course&_embed=student`)
 }
       borrarInscripcion(id: string): Observable<Inscripcion[]>{
       return this.http
@@ -31,7 +31,8 @@ export class InscripcionService {
       .put<Inscripcion>(`http://localhost:3000/inscriptions/${id}`, inscripcion);
     }
 
-    // TRAER INSCRIPCIONES DE UN DOC
-    getInscripcionesDoc(doc: string): Observable<Inscripcion[] >{ return this.http.get<Inscripcion[]>(`http://localhost:3000/inscriptions?doc=${doc}`)
+    // TRAER INSCRIPCIONES DE UN ALUMNOID
+    getInscripcionesId(studentID: string): Observable<Inscripcion[] >{ return this.http
+    .get<Inscripcion[]>(`http://localhost:3000/inscriptions?_embed=course&studentId=${studentID}`)
   }
 }

@@ -23,7 +23,7 @@ export class AlumnosDetalleComponent {
 
  // TABLA
 
-displayedColumns: string[] = ['id', 'cursoId'];
+displayedColumns: string[] = ['id', 'desc', 'cursoId'];
 
 
 
@@ -35,9 +35,10 @@ constructor (private activRoute: ActivatedRoute, private aluServ: AlumnoService,
   
   this.inscripcion$ = this.alumno$.pipe(
       switchMap((alumno) => {
-        if (alumno && alumno.doc) {
-          let docString = alumno.doc.toString();
-          return this.inscServ.getInscripcionesDoc(docString);
+        if (alumno && alumno.id) {
+          let idString = alumno.id.toString();
+          return this.inscServ.getInscripcionesId(idString);
+         
        
         }
        return of([]);

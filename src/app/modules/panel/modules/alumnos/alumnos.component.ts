@@ -35,7 +35,7 @@ export class AlumnosComponent {
     this.alumnoForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.minLength(3)]],
       apellido: ['', [Validators.required, Validators.minLength(3)]],
-      doc: ['', [Validators.required, Validators.pattern('[0-9]+'), Validators.min(9999), Validators.max(9999999)]],
+      doc: ['', [Validators.required]],
     });
   }
 

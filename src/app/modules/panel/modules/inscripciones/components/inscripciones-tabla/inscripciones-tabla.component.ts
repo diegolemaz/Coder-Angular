@@ -12,7 +12,7 @@ import { AutenticacionService } from '../../../../../../core/services/autenticac
 })
 export class InscripcionesTablaComponent {
 
-  displayedColumns: string[] = ['doc', 'cursoId', 'acciones' ];
+ displayedColumns: string[] = ['doc', 'studentId', 'student', 'courseId','course' ,'acciones'];
  
     // INICIALIZAMOS DATA DEL COMPONENTE PADRE
   @Input ()

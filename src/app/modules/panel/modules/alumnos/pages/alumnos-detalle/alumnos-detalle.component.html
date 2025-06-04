@@ -1,36 +1,40 @@
-@if (!(alumno$ | async)) {
-    <h1>Aluno no encontrado.</h1>
-}
-@else {
-    <h1>Inscripciones de {{ (alumno$ | async)?.nombre }} {{ (alumno$ | async)?.apellido }}</h1>
-}
-
-@if (!(inscripcion$ | async))
-{
-    <p>No se encontraron inscripciones</p>
-}
-@else {
-
-    <div>
-<table  mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-  <!-- Columna ID -->
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef> ID </th>
-    <td mat-cell *matCellDef="let inscripcion"> {{ inscripcion.id }} </td>
+<div class="d-flex flex-column justify-content-center my-4 mx-5">
+  <ng-container *ngIf="(alumno$ | async) as alumno; else noAlumno">
+    <h1>Inscripciones de {{ alumno.nombre }} {{ alumno.apellido }}</h1>
+    <p>Id de alumno: {{ alumno.id }}</p>
+    <p>Documento: {{ alumno.doc }}</p>
   </ng-container>
-
-  <!-- Columna cursoId -->
-  <ng-container matColumnDef="cursoId">
-    <th mat-header-cell *matHeaderCellDef> cursoId </th>
-    <td mat-cell *matCellDef="let inscripcion"> {{ inscripcion.cursoId }} </td>
-  </ng-container>
-
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-</table>
 </div>
 
-}
+<ng-template #noAlumno>
+  <h1>Alumno no encontrado.</h1>
+</ng-template>
+
+<div class="d-flex flex-column justify-content-center my-4 mx-5">
+  <table *ngIf="(inscripcion$ | async)?.length" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Columna inscripcionId -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Inscripción ID </th>
+      <td mat-cell *matCellDef="let inscripcion"> {{ inscripcion.id }} </td>
+    </ng-container>
+
+    <!-- Columna Curso Nombre -->
+    <ng-container matColumnDef="desc">
+      <th mat-header-cell *matHeaderCellDef> Curso Nombre </th>
+      <td mat-cell *matCellDef="let inscripcion"> {{ inscripcion.course?.desc }} </td>
+    </ng-container>
+
+    <!-- Columna cursoId -->
+    <ng-container matColumnDef="cursoId">
+      <th mat-header-cell *matHeaderCellDef> Curso ID </th>
+      <td mat-cell *matCellDef="let inscripcion"> {{ inscripcion.courseId }} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <ng-container *ngIf="!(inscripcion$ | async)?.length">
+    <p>No se encontraron inscripciones</p>
+  </ng-container>
+</div>
