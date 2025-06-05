@@ -1,6 +1,6 @@
 <h1>LISTA DE CURSOS</h1>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table *ngIf="(cursos$ | async)?.length" mat-table [dataSource]="dataSource" mat-table class="mat-elevation-z8">
   <!-- Columna id -->
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef >ID</th>

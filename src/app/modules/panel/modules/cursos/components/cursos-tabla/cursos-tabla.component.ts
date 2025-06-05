@@ -3,34 +3,39 @@ import { Curso } from '../../models';
 import { Observable } from 'rxjs';
 import { User } from '../../../../../../core/models';
 import { AutenticacionService } from '../../../../../../core/services/autenticacion.service';
+import { selectCursos } from '../../store/cursos.selector';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-cursos-tabla',
-  standalone: false, 
+  standalone: false,
   templateUrl: './cursos-tabla.component.html',
 })
-
 export class CursosTablaComponent {
-displayedColumns: string[] = ['id', 'desc', 'acciones'];
-  
-  
+  displayedColumns: string[] = ['id', 'desc', 'acciones'];
+
   // INICIALIZAMOS DATA DEL COMPONENTE PADRE
-  @Input ()
-  dataSource: Curso [] = [];
+  @Input()
+  dataSource: Curso[] = [];
 
- // BORRAR UN CURSO
- @Output ()
-borrarCurso = new EventEmitter<number>();
+  // BORRAR UN CURSO
+  @Output()
+  borrarCurso = new EventEmitter<number>();
 
- // EDITAR UN CURSO
- @Output ()
-editarCurso = new EventEmitter<Curso>();
+  // EDITAR UN CURSO
+  @Output()
+  editarCurso = new EventEmitter<Curso>();
+
+  cursos$: Observable<Curso[] | []>;
 
   // PARA USAR OBSERVABLE DE DATOS DE USUARIO
   autUsuario$: Observable<User | null>;
-  constructor(private autServ: AutenticacionService) {
+  constructor(private autServ: AutenticacionService, private store: Store) {
     this.autUsuario$ = this.autServ.autenticacionUser$;
+    this.cursos$ = this.store.select(selectCursos);
+
+    // this.store
+    //   .select(selectCursos)
+    //   .subscribe((cursos) => (this.dataSource = cursos));
   }
 }
-
-

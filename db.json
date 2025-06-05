@@ -162,8 +162,7 @@
     },
     {
       "id": "3",
-      "cursoId": "3",
-      "desc": "JavaScript"
+      "desc": "JavaScript Editado"
     },
     {
       "id": "4",
@@ -192,37 +191,7 @@
     },
     {
       "id": "9",
-      "cursoId": "9",
-      "desc": "Backend 3"
-    },
-    {
-      "id": "10",
-      "cursoId": "10",
-      "desc": "Javascript"
-    },
-    {
-      "id": "33",
-      "desc": "rffgfgf"
-    },
-    {
-      "id": "14",
-      "desc": "dsdsdssd"
-    },
-    {
-      "id": "15",
-      "desc": "dfddfdf editado"
-    },
-    {
-      "id": "16",
-      "desc": "fdfdfdfgfgh"
-    },
-    {
-      "id": "44",
-      "desc": "ttt"
-    },
-    {
-      "id": "11",
-      "desc": "cursochot"
+      "desc": "Backend 15"
     }
   ],
   "inscriptions": [
@@ -252,9 +221,9 @@
       "courseId": "3"
     },
     {
-      "id": "6",
       "studentId": "7",
-      "courseId": "10"
+      "courseId": "2",
+      "id": "6"
     },
     {
       "id": "7",
@@ -278,7 +247,7 @@
     },
     {
       "studentId": "5",
-      "courseId": "44",
+      "courseId": "1",
       "id": "12"
     },
     {
@@ -300,6 +269,16 @@
       "studentId": "9",
       "courseId": "1",
       "id": "324f"
+    },
+    {
+      "id": "6a5c",
+      "studentId": "9",
+      "courseId": null
+    },
+    {
+      "id": "7fec",
+      "studentId": "12",
+      "courseId": "2"
     }
   ]
 }
