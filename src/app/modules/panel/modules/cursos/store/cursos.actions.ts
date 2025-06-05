@@ -1,8 +1,6 @@
 import { createAction, createActionGroup, emptyProps, props } from "@ngrx/store";
 import { Curso } from "../models";
 
-//export const loadCursos = createAction()
-
 export const CursosActions = createActionGroup({
     source: "Cursos",
     events: {

@@ -6,20 +6,20 @@ import { CursosEffects } from './cursos.effects';
 
 export interface CursosState {
   cursos: Curso[];
-  estoyEditId: number | null;
   estoyCargando: boolean;
   error: string | null;
 }
 
 const initialState: CursosState = {
   cursos: [],
-  estoyEditId: null,
   estoyCargando: false,
   error: null,
 };
 
 const cursosReducer = createReducer(
   initialState,
+
+   // ACCION CARGAR CURSOS
   on(CursosActions.cargarCursos, (state) => {
     return {
       ...state,
@@ -46,6 +46,7 @@ const cursosReducer = createReducer(
     };
   }),
 
+ // ACCION EDITAR CURSO
   on(CursosActions.editarCursoSuccess, (state, action) => {
     return {
       ...state,
@@ -60,12 +61,7 @@ const cursosReducer = createReducer(
     error: error,
   })),
 
-//   on(CursosActions.agregarCurso, (state, action) => {
-//     return {
-//       ...state,
-//     };
-//   }),
-
+ // ACCION AGREGAR CURSO
   on(CursosActions.agregarCursoSuccess, (state, action) => {
     return {
       ...state,
@@ -76,9 +72,9 @@ const cursosReducer = createReducer(
   on(CursosActions.agregarCursoFailure, (state, { error }) => ({
     ...state,
     error: error,
-    estoyEditId: null,
   })),
 
+    // ACCION BORRAR CURSO
   on(CursosActions.borrarCursoSuccess, (state, action) => {
     return {
       ...state,

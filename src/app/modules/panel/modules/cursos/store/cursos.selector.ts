@@ -11,7 +11,6 @@ export const selectCursoById = (idCurso: number | string) => createSelector(sele
 // accede a variable estoycargando
 
 export const selectCursosCargando = createSelector(selectCursosState, (state) => state.estoyCargando);
-export const selectCursosEditando = createSelector(selectCursosState, (state) => state.estoyEditId);
 
 // accede al error
 

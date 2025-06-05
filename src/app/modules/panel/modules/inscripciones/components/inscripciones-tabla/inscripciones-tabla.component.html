@@ -14,7 +14,7 @@
     <!-- Columna Alumno -->
   <ng-container matColumnDef="student">
     <th mat-header-cell *matHeaderCellDef appCabeceras20>Alumno Nombre</th>
-    <td mat-cell *matCellDef="let element">{{ element.student?.nombre }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.student?.nombre }} {{element.student?.apellido}} </td>
   </ng-container>
  
   <!-- Columna Curso ID -->

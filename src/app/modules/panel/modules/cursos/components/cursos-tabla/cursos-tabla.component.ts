@@ -33,9 +33,5 @@ export class CursosTablaComponent {
   constructor(private autServ: AutenticacionService, private store: Store) {
     this.autUsuario$ = this.autServ.autenticacionUser$;
     this.cursos$ = this.store.select(selectCursos);
-
-    // this.store
-    //   .select(selectCursos)
-    //   .subscribe((cursos) => (this.dataSource = cursos));
   }
 }
