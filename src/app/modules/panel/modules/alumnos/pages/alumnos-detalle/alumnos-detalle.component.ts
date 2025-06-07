@@ -17,39 +17,39 @@ import { MatTableDataSource } from '@angular/material/table';
 export class AlumnosDetalleComponent {
 
   alumno$: Observable<Alumno | null>;
- inscripcion$: Observable<Inscripcion []>
- dataSource = new MatTableDataSource<Inscripcion>();
+  inscripcion$: Observable<Inscripcion[]>
+  dataSource = new MatTableDataSource<Inscripcion>();
 
 
- // TABLA
+  // TABLA
 
-displayedColumns: string[] = ['id', 'desc', 'cursoId'];
-
-
+  displayedColumns: string[] = ['id', 'desc', 'cursoId'];
 
 
-constructor (private activRoute: ActivatedRoute, private aluServ: AlumnoService, private inscServ: InscripcionService  ) {
-  const alumnoId = this.activRoute.snapshot.params['id'];
-  this.alumno$ = this.aluServ.getAlumnoById(alumnoId);
 
-  
-  this.inscripcion$ = this.alumno$.pipe(
+
+  constructor(private activRoute: ActivatedRoute, private aluServ: AlumnoService, private inscServ: InscripcionService) {
+    const alumnoId = this.activRoute.snapshot.params['id'];
+    this.alumno$ = this.aluServ.getAlumnoById(alumnoId);
+
+
+    this.inscripcion$ = this.alumno$.pipe(
       switchMap((alumno) => {
         if (alumno && alumno.id) {
           let idString = alumno.id.toString();
           return this.inscServ.getInscripcionesId(idString);
-         
-       
+
+
         }
-       return of([]);
-       
-      })        
+        return of([]);
+
+      })
     );
-   
+
     this.inscripcion$.subscribe(inscripciones => {
-      this.dataSource.data = inscripciones; 
+      this.dataSource.data = inscripciones;
     });
 
 
-}
+  }
 }

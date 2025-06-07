@@ -43,10 +43,16 @@
   ],
   "students": [
     {
-      "nombre": "Gaston ",
-      "apellido": "Martinez ",
+      "nombre": "Ramiro ",
+      "apellido": "Fagundez ",
+      "doc": "566678",
+      "id": "1"
+    },
+        {
+      "id": "2",
       "doc": "752435",
-      "id": "2"
+      "nombre": "Gaston",
+      "apellido": "Martinez"
     },
     {
       "id": "3",

@@ -9,15 +9,16 @@ import { StoreModule } from '@ngrx/store';
 import { cursosFeature } from './store/cursos.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { CursosEffects } from './store/cursos.effects';
+import { CursosDetalleComponent } from './pages/cursos-detalle/cursos-detalle.component';
 
 @NgModule({
-  declarations: [CursosComponent, CursosTablaComponent],
+  declarations: [CursosComponent, CursosTablaComponent, CursosDetalleComponent],
   imports: [
     CommonModule,
-    CursosRoutingModule, SharedModule, StoreModule.forFeature(cursosFeature), 
+    CursosRoutingModule, SharedModule, StoreModule.forFeature(cursosFeature),
     EffectsModule.forFeature([CursosEffects]),
 
   ],
   exports: [CursosComponent],
 })
-export class CursosModule {}
+export class CursosModule { }
