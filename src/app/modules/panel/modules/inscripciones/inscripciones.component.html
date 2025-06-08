@@ -6,34 +6,28 @@
     <app-inscripciones-tabla (borrarInscripcion)="onBorrarInscripcion($event)"
       (editarInscripcion)="onEditarInscripcion($event)" [dataSource]="inscripcionesData" />
     <form [formGroup]="inscripcionForm" (ngSubmit)="onSubmit()" class="container text-center">
-      <div class="row">
-        <div class="col">
-          <!-- <mat-label>Alumno ID</mat-label>
-            <input matInput class="w-100" id="studentId" type="text" formControlName="studentId" /> -->
-          <mat-form-field>
-            <mat-label>Alumnos</mat-label>
+      <div class="d-flex row my-4 justify-content-between">
+        <div class="d-flex col-4">
+          <mat-form-field class="w-100">
+            <mat-label>Seleccione Alumno</mat-label>
             <mat-select formControlName="studentId">
               @for (alu of alumnos; track alu) {
-              <mat-option [value]="alu.id">{{alu.nombre}}</mat-option>
+              <mat-option [value]="alu.id">{{alu.nombre}} {{alu.apellido}} - {{alu.doc}}</mat-option>
               }
             </mat-select>
           </mat-form-field>
         </div>
-        <div class="col">
-          <!-- <mat-form-field>
-            <mat-label>Curso ID</mat-label>
-            <input matInput class="w-100" id="courseId" type="text" formControlName="courseId" />
-          </mat-form-field> -->
-          <mat-form-field>
-            <mat-label>Cursos</mat-label>
+        <div class="d-flex col-4">
+          <mat-form-field class="w-100">
+            <mat-label>Selecione Curso</mat-label>
             <mat-select formControlName="courseId">
               @for (cur of cursos; track cur) {
-                <mat-option [value]="cur.id">{{cur.desc}}</mat-option>
+              <mat-option [value]="cur.id">{{cur.desc}} (Id: {{cur.id}}) </mat-option>
               }
             </mat-select>
           </mat-form-field>
         </div>
-        <div class="col">
+        <div class="d-flex col-2">
           <button mat-stroked-button type="submit" class=" w-100">{{estoyEditId ? 'Editar': 'Agregar'}}</button>
         </div>
       </div>

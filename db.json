@@ -185,8 +185,7 @@
     },
     {
       "id": "5",
-      "cursoId": "5",
-      "desc": "Typescript"
+      "desc": "TypeScript Avanzado"
     },
     {
       "id": "6",
@@ -243,9 +242,9 @@
       "courseId": "1"
     },
     {
-      "id": "2",
       "studentId": "3",
-      "courseId": "5"
+      "courseId": "5",
+      "id": "2"
     },
     {
       "id": "3",
@@ -328,14 +327,9 @@
       "id": "fb92"
     },
     {
-      "studentId": "5",
-      "courseId": "12",
-      "id": "a6be"
-    },
-    {
-      "id": "508d",
       "studentId": "2",
-      "courseId": "13"
+      "courseId": "9",
+      "id": "508d"
     }
   ]
 }

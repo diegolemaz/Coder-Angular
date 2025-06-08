@@ -90,34 +90,41 @@ export class InscripcionesComponent {
       alert('Hay errores en el formulario de inscripcion');
     } else {
       if (this.estoyEditId) {
-        this.inscripcionService
-          .editarInscripcion(
-            this.estoyEditId.toString(),
-            this.inscripcionForm.value
-          )
-          .subscribe({
-            next: () => {
-              this.inscripcionService
-                .getInscripciones$()
-                .subscribe((inscripciones) => {
-                  this.inscripcionesData = inscripciones; //ACTUALIZA LA TABLA
-                });
-              this.estoyEditId = null;
-            },
-          });
-          this.inscripcionForm.reset();
+        this.validarEditar().subscribe((valido) => {
+          if (valido) {
+            this.inscripcionService
+              .editarInscripcion(this.estoyEditId?.toString()!, this.inscripcionForm.value)
+              .subscribe({
+                next: () => {
+                  this.inscripcionService
+                    .getInscripciones$()
+                    .subscribe((inscripciones) => {
+                      this.inscripcionesData = inscripciones; //ACTUALIZA LA TABLA
+                    });
+                  this.estoyEditId = null;
+                },
+              });
+            this.inscripcionForm.reset();
+          } else {
+            alert('Ya existe la inscripción');
+          }
+        });
       } else {
         // Estoy Agrega
         this.validarAgregar().subscribe((valido) => {
           if (valido) {
             // SI NO ESTOY EDITANDO, AGREGAR NUEVO PRODUCTO ADAPTADA HTTP
-            this.inscripcionService.agregarInscripcion(this.inscripcionForm.value).subscribe({
-              next: () => {
-                this.inscripcionService.getInscripciones$().subscribe((inscripciones) => {
-                  this.inscripcionesData = inscripciones; //ACTUALIZA LA TABLA
-                });
-              },
-            });
+            this.inscripcionService
+              .agregarInscripcion(this.inscripcionForm.value)
+              .subscribe({
+                next: () => {
+                  this.inscripcionService
+                    .getInscripciones$()
+                    .subscribe((inscripciones) => {
+                      this.inscripcionesData = inscripciones; //ACTUALIZA LA TABLA
+                    });
+                },
+              });
             this.inscripcionForm.reset();
           } else {
             alert('Ya existe la inscripción');
@@ -127,13 +134,25 @@ export class InscripcionesComponent {
     }
   }
 
+  // VALIDACIONES PARA AGREGAR 
   validarAgregar(): Observable<boolean> {
     const studentId = this.inscripcionForm.get('studentId')?.value;
     const courseId = this.inscripcionForm.get('courseId')?.value;
 
     return this.inscripcionService
       .existInscripcion$(studentId, courseId)
-      .pipe(map((existe) => !existe));
+      .pipe(map((valida) => !valida));
+  }
+
+  // VALIDACIONES PARA EDITAR 
+  validarEditar(): Observable<boolean> {
+    const studentId = this.inscripcionForm.get('studentId')?.value;
+    const courseId = this.inscripcionForm.get('courseId')?.value;
+    // BUSCA LA INSCRIPCION CON LOS DATOS DE PANTALLA
+    return this.inscripcionService
+      .obtenerInscripcion$(studentId, courseId)
+      // BUSCO SI HAY INSCRIPCION NO SIENDO LA ORIGINAL
+      .pipe(map((inscripciones) => inscripciones.length == 0 || inscripciones[0]?.id == this.estoyEditId));
   }
 
   // BORRAR INSCRIPCION ADAPTADA HTTP
