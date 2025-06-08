@@ -48,7 +48,7 @@
       "doc": "566678",
       "id": "1"
     },
-        {
+    {
       "id": "2",
       "doc": "752435",
       "nombre": "Gaston",
@@ -225,7 +225,7 @@
     },
     {
       "id": "14",
-      "desc": " Python "
+      "desc": "Python"
     },
     {
       "id": "15",
@@ -313,9 +313,9 @@
       "id": "7fec"
     },
     {
-      "id": "34c6",
       "studentId": "5b6c",
-      "courseId": "7"
+      "courseId": "7",
+      "id": "34c6"
     },
     {
       "id": "2a89",
@@ -323,9 +323,19 @@
       "courseId": "10"
     },
     {
-      "id": "fb92",
-      "studentId": "2bef",
-      "courseId": "12"
+      "studentId": "5",
+      "courseId": "12",
+      "id": "fb92"
+    },
+    {
+      "studentId": "5",
+      "courseId": "12",
+      "id": "a6be"
+    },
+    {
+      "id": "508d",
+      "studentId": "2",
+      "courseId": "13"
     }
   ]
 }

@@ -12,7 +12,7 @@ export class AlumnoService  {
 // GET ALUMNOS Y BORRARALUMNO HTTP
 
     getAlumnos$(): Observable<Alumno[]> { 
-      return this.http.get<Alumno[]>(`http://localhost:3000/students`)
+      return this.http.get<Alumno[]>(`http://localhost:3000/students?_sort=nombre`)
     }
 
     borrarAlumno(id: string): Observable<Alumno[]>{

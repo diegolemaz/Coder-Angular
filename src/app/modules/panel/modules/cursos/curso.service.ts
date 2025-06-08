@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { concatMap, Observable } from 'rxjs';
 import { Curso, CursoForm } from './models';
 import { HttpClient } from '@angular/common/http';
-import { Alumno } from '../alumnos/models';
 import { Inscripcion } from '../inscripciones/models';
 
 
@@ -11,7 +10,7 @@ export class CursoService {
   constructor(private http: HttpClient){}
 
     // GET ALUMNOS Y BORRARALUMNO HTTP
-    getCursos$(): Observable<Curso[]> { return this.http.get<Curso[]>(`http://localhost:3000/courses`)
+    getCursos$(): Observable<Curso[]> { return this.http.get<Curso[]>(`http://localhost:3000/courses?_sort=desc`)
     }
 
     borrarCurso(id: string): Observable<Curso[]>{
