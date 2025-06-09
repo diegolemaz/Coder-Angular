@@ -18,6 +18,13 @@
       {{ element | alumnoApellidoNombre | titlecase  }}
     </td>
   </ng-container>
+    <!-- Columna Perfil -->
+  <ng-container matColumnDef="perfil">
+    <th mat-header-cell *matHeaderCellDef appCabeceras20>Perfil</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.perfil | titlecase  }}
+    </td>
+  </ng-container>
   <!-- Columna Acciones -->
   <ng-container matColumnDef="acciones">
     <th mat-header-cell *matHeaderCellDef appCabeceras20>Acciones</th>

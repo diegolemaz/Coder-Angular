@@ -36,6 +36,7 @@ export class AlumnosComponent {
       nombre: ['', [Validators.required, Validators.minLength(3)]],
       apellido: ['', [Validators.required, Validators.minLength(3)]],
       doc: ['', [Validators.required]],
+      perfil: ['',[Validators.required]]
     });
   }
 

@@ -3,8 +3,11 @@ export interface Usuario {
   nombre: string;
   role: string;
   email: string;
- password: string;
- token: string;
+  password: string;
+  direccion: string;
+  tel: number;
+  token: string;
+
 }
 
 export interface UsuarioForm {
@@ -12,6 +15,8 @@ export interface UsuarioForm {
   nombre: string;
   role: string;
   email: string;
- password: string;
- token: string;
+  password: string;
+  direccion: string;
+  tel: number;
+  token: string;
 }

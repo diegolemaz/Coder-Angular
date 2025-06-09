@@ -12,7 +12,7 @@ import { Store } from '@ngrx/store';
   templateUrl: './cursos-tabla.component.html',
 })
 export class CursosTablaComponent {
-  displayedColumns: string[] = ['id', 'desc', 'acciones'];
+  displayedColumns: string[] = ['id', 'desc', 'horas', 'clases', 'profesor', 'acciones'];
 
   // INICIALIZAMOS DATA DEL COMPONENTE PADRE
   @Input()

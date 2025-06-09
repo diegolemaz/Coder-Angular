@@ -2,6 +2,9 @@
   <ng-container *ngIf="(datosCurso$ | async) as curso; else noCurso">
     <h1>Alumnos inscriptos a: {{ curso.desc }}</h1>
     <p>Id de curso: {{ curso.id }}</p>
+    <p>Cantidad de horas: {{ curso.horas }} hs.</p>
+    <p>Cantidad de clases: {{ curso.clases }}</p>
+    <p>Profesor: {{ curso.profesor }}</p>
   </ng-container>
 </div>
 

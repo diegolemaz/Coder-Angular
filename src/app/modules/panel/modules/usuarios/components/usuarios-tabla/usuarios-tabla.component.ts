@@ -12,7 +12,7 @@ import { AutenticacionService } from '../../../../../../core/services/autenticac
 })
 export class UsuariosTablaComponent {
 
-  displayedColumns: string[] = ['nombre', 'email', 'password', 'role', 'acciones'];
+  displayedColumns: string[] = ['nombre', 'email', 'password', 'direccion', 'tel', 'role', 'acciones'];
 
 
   // INICIALIZAMOS DATA DEL COMPONENTE PADRE

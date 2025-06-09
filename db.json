@@ -1,43 +1,53 @@
 {
   "users": [
     {
-      "id": "1",
       "nombre": "Manuel Gonzalez",
-      "role": "admin",
       "email": "manuel@gonzalez.com",
       "password": "123456",
-      "token": "fake_mg_token"
+      "direccion": "Yatai 1224",
+      "tel": "5656656567",
+      "role": "admin",
+      "token": "dGZzaXkxbHVsbXRtYm9jdXd4ZQ==",
+      "id": "1"
     },
     {
       "nombre": "Daniel Cardona",
       "email": "daniel@cardona.com",
       "password": "123456",
+      "direccion": "Av. 18 de Julio 1240",
+      "tel": "5566566677",
       "role": "user",
-      "token": "am91dXR2ZHR0ZW1iamd2OWF3",
+      "token": "dWcwb2xuMjBkZzltYm9jd2ZidQ==",
       "id": "2"
     },
     {
-      "id": "d602",
       "nombre": "arturo benitez",
       "email": "arturo@benitez.com",
       "password": "123456",
+      "direccion": "Av. Burgues 988",
+      "tel": "7897567565",
       "role": "user",
-      "token": "eWFjdm14bnY3c3JtYjRlY2dneg=="
+      "token": "enYxaDBmMTdxMW1ib2N2dmY2",
+      "id": "d602"
     },
     {
-      "id": "0025",
       "nombre": "diego",
       "email": "diego@lema.com",
       "password": "123456",
+      "direccion": "Marcelino Sosa 899",
+      "tel": "7676655454",
       "role": "admin",
-      "token": "N3hxbXIza2w2MWZtYjRmM2pkcA=="
+      "token": "dWdhNWRodGZqNWRtYm9kbW92MA==",
+      "id": "0025"
     },
     {
       "nombre": "Marcelo mitre",
       "email": "marcelo@mitre.com",
       "password": "123456",
+      "direccion": "Av. Italia 1222",
+      "tel": "5676756588",
       "role": "user",
-      "token": "eDd1NjN3aGtubGFtYmpndXk5cQ==",
+      "token": "YjE5eTBwc202ZGRtYm9kMjlwYQ==",
       "id": "90d1"
     }
   ],
@@ -46,290 +56,411 @@
       "nombre": "Ramiro ",
       "apellido": "Fagundez ",
       "doc": "566678",
+      "perfil": "\tUsuario Final",
       "id": "1"
     },
     {
-      "id": "2",
-      "doc": "752435",
       "nombre": "Gaston",
-      "apellido": "Martinez"
+      "apellido": "Martinez",
+      "doc": "752435",
+      "perfil": "\tUsuario Final",
+      "id": "2"
     },
     {
-      "id": "3",
-      "doc": "353990",
       "nombre": "Marcelo",
-      "apellido": "Perez"
+      "apellido": "Perez",
+      "doc": "353990",
+      "perfil": "\tIt",
+      "id": "3"
     },
     {
-      "id": "4",
-      "doc": "847897",
       "nombre": "Juliana",
-      "apellido": "Mendez"
+      "apellido": "Mendez",
+      "doc": "847897",
+      "perfil": "\tIt",
+      "id": "4"
     },
     {
-      "id": "5",
-      "doc": "396735",
       "nombre": "Romina",
-      "apellido": "Franchi"
+      "apellido": "Franchi",
+      "doc": "396735",
+      "perfil": "Desarrollador",
+      "id": "5"
     },
     {
-      "id": "6",
-      "doc": "855756",
       "nombre": "Jorge",
-      "apellido": "Mestoy"
+      "apellido": "Mestoy",
+      "doc": "855756",
+      "perfil": "\tIt",
+      "id": "6"
     },
     {
-      "id": "7",
-      "doc": "506783",
       "nombre": "Gustavo",
-      "apellido": "Madrin"
+      "apellido": "Madrin",
+      "doc": "506783",
+      "perfil": "\tUsuario Final",
+      "id": "7"
     },
     {
       "nombre": "Solana",
       "apellido": "Rodriguez",
       "doc": "506123",
+      "perfil": "Usuario Final",
       "id": "8"
     },
     {
-      "id": "9",
-      "doc": "590704",
       "nombre": "Pablo",
-      "apellido": "Benitez"
+      "apellido": "Benitez",
+      "doc": "590704",
+      "perfil": "Desarrollador",
+      "id": "9"
     },
     {
-      "id": "10",
-      "doc": "647554",
       "nombre": "Sergio",
-      "apellido": "Perez"
+      "apellido": "Perez",
+      "doc": "647554",
+      "perfil": "Desarrollador",
+      "id": "10"
     },
     {
-      "id": "11",
-      "doc": "647546",
       "nombre": "Ramiro",
-      "apellido": "Gonzalez"
+      "apellido": "Gonzalez",
+      "doc": "647546",
+      "perfil": "It",
+      "id": "11"
     },
     {
-      "id": "12",
-      "doc": "645546",
       "nombre": "Adriana",
-      "apellido": "Ramirez"
+      "apellido": "Ramirez",
+      "doc": "645546",
+      "perfil": "Desarrollador",
+      "id": "12"
     },
     {
-      "id": "13",
-      "doc": "647222",
       "nombre": "Micaela",
-      "apellido": "Marquez"
+      "apellido": "Marquez",
+      "doc": "647222",
+      "perfil": "Usuario Final",
+      "id": "13"
     },
     {
       "nombre": "Juan",
       "apellido": "Gonzalez",
       "doc": "287323",
+      "perfil": "Usuario Final",
       "id": "14"
     },
     {
       "nombre": "Ramon",
       "apellido": "Marquez",
       "doc": "762323",
+      "perfil": "Usuario Final",
       "id": "15"
     },
     {
       "nombre": "Mercedes",
       "apellido": "Gonzalez",
       "doc": "54555",
+      "perfil": "Usuario Final",
       "id": "6640"
     },
     {
       "nombre": "Maria",
       "apellido": "Estevez",
       "doc": "232232",
+      "perfil": "Usuario Final",
       "id": "2bef"
     },
     {
-      "id": "e217",
       "nombre": "Carolina",
       "apellido": "Perez",
-      "doc": "23423"
+      "doc": "23423",
+      "perfil": "Desarrollador",
+      "id": "e217"
     },
     {
       "nombre": "Javier",
       "apellido": "Sorondo",
       "doc": "3443435",
+      "perfil": "Desarrollador",
       "id": "b186"
     },
     {
-      "id": "5b6c",
       "nombre": "Arturo",
       "apellido": "Zabala",
-      "doc": "5656565"
+      "doc": "5656565",
+      "perfil": "It",
+      "id": "5b6c"
     }
   ],
   "courses": [
     {
       "id": "1",
-      "cursoId": "1",
-      "desc": "Angular"
+      "desc": "Programación en JavaScript",
+      "horas": "40",
+      "clases": "10",
+      "profesor": "Laura González"
     },
     {
       "id": "2",
-      "cursoId": "2",
-      "desc": "React Js"
+      "desc": "Desarrollo Backend con Node.js",
+      "horas": "38",
+      "clases": "9",
+      "profesor": "Valeria Suárez"
     },
     {
       "id": "3",
-      "desc": "JavaScript "
+      "desc": "Desarrollo de Apps Móviles",
+      "horas": "55",
+      "clases": "13",
+      "profesor": "Nicolás Herrera"
     },
     {
       "id": "4",
-      "cursoId": "4",
-      "desc": "Diseño Web"
+      "desc": "Machine Learning Básico",
+      "horas": "60",
+      "clases": "14",
+      "profesor": "Andrés Gómez"
     },
     {
       "id": "5",
-      "desc": "TypeScript Avanzado"
+      "desc": "TypeScript Avanzado",
+      "horas": "50",
+      "clases": "20",
+      "profesor": "Marcelo Rodriguez"
     },
     {
       "id": "6",
-      "cursoId": "6",
-      "desc": "Vue JS"
+      "desc": "Diseño Gráfico Digital",
+      "horas": "37",
+      "clases": "9",
+      "profesor": "Esther Ramírez"
     },
     {
       "id": "7",
-      "cursoId": "7",
-      "desc": "Backend 1"
+      "desc": "Desarrollo Web con Angular",
+      "horas": "50",
+      "clases": "12",
+      "profesor": "Martín Pérez"
     },
     {
       "id": "8",
-      "cursoId": "8",
-      "desc": "Backend 2"
+      "desc": "Introducción a Python",
+      "horas": "30",
+      "clases": "8",
+      "profesor": "Sofía Martínez"
     },
     {
       "id": "9",
-      "desc": "Backend 3"
+      "desc": "Adm. Bases de Datos SQL",
+      "horas": "45",
+      "clases": "11",
+      "profesor": "Javier Fernández"
     },
     {
       "id": "10",
-      "desc": "JavaScript Avanzado"
+      "desc": "Redes y Telecomunicaciones",
+      "horas": "48",
+      "clases": "12",
+      "profesor": "aula Vázquez"
     },
     {
       "id": "11",
-      "desc": "Marketing Digital"
+      "desc": "Desarrollo Web con Angular",
+      "horas": "50",
+      "clases": "12",
+      "profesor": "Mariana López"
     },
     {
       "id": "12",
-      "desc": "Pascal"
+      "desc": "Introducción A Pascal",
+      "horas": "37",
+      "clases": "9",
+      "profesor": "Esther Ramírez"
     },
     {
       "id": "13",
-      "desc": "Delphi"
+      "desc": "Diseño UX/UI",
+      "horas": "35",
+      "clases": "9",
+      "profesor": "Camila Rodríguez"
     },
     {
       "id": "14",
-      "desc": "Python"
+      "desc": "Cloud Computing con AWS",
+      "horas": "50",
+      "clases": "12",
+      "profesor": "Mariana López"
     },
     {
       "id": "15",
-      "desc": "TypeScript"
+      "desc": "Big Data y Análisis de Datos",
+      "horas": "53",
+      "clases": "13",
+      "profesor": "Ricardo Mendoza"
     },
     {
       "id": "16",
-      "desc": "Macroeconomía básica"
+      "desc": "Inteligencia Artificial Aplicada",
+      "horas": "65",
+      "clases": "15",
+      "profesor": "Alejandro Torres"
     }
   ],
   "inscriptions": [
     {
-      "id": "1",
-      "studentId": "2",
-      "courseId": "1"
-    },
-    {
       "studentId": "3",
       "courseId": "5",
+      "fecha": "2025-06-09T03:10:32.036Z",
+      "usuarioId": "diego@lema.com",
       "id": "2"
     },
     {
       "id": "3",
       "studentId": "4",
-      "courseId": "2"
+      "courseId": "2",
+      "fecha": "2025-06-09T03:10:32.036Z",
+      "usuarioId": "diego@lema.com"
     },
     {
       "id": "4",
       "studentId": "5",
-      "courseId": "6"
+      "courseId": "6",
+      "fecha": "2025-06-09T03:10:32.036Z",
+      "usuarioId": "diego@lema.com"
     },
     {
       "studentId": "6",
       "courseId": "7",
+      "fecha": "2025-06-09T03:10:13.968Z",
+      "usuarioId": "diego@lema.com",
       "id": "5"
     },
     {
       "studentId": "7",
       "courseId": "2",
-      "id": "6"
+      "id": "6",
+      "fecha": "2025-06-09T03:10:32.036Z",
+      "usuarioId": "diego@lema.com"
     },
     {
-      "id": "7",
       "studentId": "8",
-      "courseId": "4"
+      "courseId": "4",
+      "fecha": "2025-06-09T03:10:11.054Z",
+      "usuarioId": "diego@lema.com",
+      "id": "7"
     },
     {
       "id": "8",
       "studentId": "9",
-      "courseId": "1"
+      "courseId": "1",
+      "fecha": "2025-06-09T03:10:32.036Z",
+      "usuarioId": "diego@lema.com"
     },
     {
       "studentId": "9",
       "courseId": "12",
-      "id": "9"
+      "id": "9",
+      "fecha": "2025-06-09T03:10:32.036Z",
+      "usuarioId": "diego@lema.com"
     },
     {
       "studentId": "5",
       "courseId": "3",
-      "id": "12"
+      "id": "12",
+      "fecha": "2025-06-09T03:10:32.036Z",
+      "usuarioId": "diego@lema.com"
     },
     {
-      "id": "13",
       "studentId": "6",
-      "courseId": "2"
+      "courseId": "2",
+      "fecha": "2025-06-09T03:10:08.421Z",
+      "usuarioId": "diego@lema.com",
+      "id": "13"
     },
     {
       "studentId": "6",
       "courseId": "6",
-      "id": "14"
+      "id": "14",
+      "fecha": "2025-06-09T03:10:32.036Z",
+      "usuarioId": "diego@lema.com"
     },
     {
       "studentId": "8",
       "courseId": "9",
+      "fecha": "2025-06-09T03:10:05.675Z",
+      "usuarioId": "diego@lema.com",
       "id": "1ab9"
     },
     {
       "studentId": "9",
       "courseId": "15",
-      "id": "6a5c"
+      "id": "6a5c",
+      "fecha": "2025-06-09T03:10:32.036Z",
+      "usuarioId": "diego@lema.com"
     },
     {
       "studentId": "12",
       "courseId": "14",
-      "id": "7fec"
+      "id": "7fec",
+      "fecha": "2025-06-09T03:10:32.036Z",
+      "usuarioId": "diego@lema.com"
     },
     {
       "studentId": "5b6c",
       "courseId": "7",
+      "fecha": "2025-06-09T03:10:03.881Z",
+      "usuarioId": "diego@lema.com",
       "id": "34c6"
     },
     {
       "id": "2a89",
       "studentId": "e217",
-      "courseId": "10"
+      "courseId": "10",
+      "fecha": "2025-06-09T03:10:32.036Z",
+      "usuarioId": "diego@lema.com"
     },
     {
       "studentId": "5",
       "courseId": "12",
-      "id": "fb92"
+      "id": "fb92",
+      "fecha": "2025-06-09T03:10:32.036Z",
+      "usuarioId": "diego@lema.com"
     },
     {
       "studentId": "2",
       "courseId": "9",
+      "fecha": "2025-06-09T03:09:53.824Z",
+      "usuarioId": "diego@lema.com",
       "id": "508d"
+    },
+    {
+      "id": "99b8",
+      "studentId": "2",
+      "courseId": "3",
+      "fecha": "2025-06-09T03:10:32.036Z",
+      "usuarioId": "diego@lema.com"
+    },
+    {
+      "studentId": "2",
+      "courseId": "2",
+      "fecha": "2025-06-09T03:10:01.997Z",
+      "usuarioId": "diego@lema.com",
+      "id": "c707"
+    },
+    {
+      "id": "c1d2",
+      "studentId": "2",
+      "courseId": "15",
+      "fecha": "2025-06-09T03:17:33.643Z",
+      "usuarioId": "daniel@cardona.com"
+    },
+    {
+      "id": "09bd",
+      "studentId": "5b6c",
+      "courseId": "2",
+      "fecha": "2025-06-09T03:17:44.878Z",
+      "usuarioId": "daniel@cardona.com"
     }
   ]
 }

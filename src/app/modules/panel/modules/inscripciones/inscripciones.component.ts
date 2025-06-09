@@ -7,6 +7,7 @@ import { Alumno } from '../alumnos/models/index';
 import { AlumnoService } from '../alumnos/alumno.services';
 import { Curso } from '../cursos/models';
 import { CursoService } from '../cursos/curso.service';
+import { AutenticacionService } from '../../../../core/services/autenticacion.service';
 
 @Component({
   selector: 'app-inscripciones',
@@ -30,9 +31,10 @@ export class InscripcionesComponent {
     private fb: FormBuilder,
     private inscripcionService: InscripcionService,
     private alumnoService: AlumnoService,
-    private cursoService: CursoService
+    private cursoService: CursoService,
+    private autServ: AutenticacionService
   ) {
-    this.loadInscripcionesObservable(); // llamando obs
+    this.loadInscripcionesObservable();
     this.loadAlumnosObservable();
     this.loadCursoObservable();
 
@@ -89,11 +91,23 @@ export class InscripcionesComponent {
     if (this.inscripcionForm.invalid) {
       alert('Hay errores en el formulario de inscripcion');
     } else {
+
+
+
+          const datosInscripcion = {
+      ...this.inscripcionForm.value, // MANTENEMOS VALORES ORIGINALES
+      fecha: new Date().toISOString(), // AGREGAMOS FECHA ACTUAL
+      
+    };
+
+
+
+
       if (this.estoyEditId) {
         this.validarEditar().subscribe((valido) => {
           if (valido) {
             this.inscripcionService
-              .editarInscripcion(this.estoyEditId?.toString()!, this.inscripcionForm.value)
+             .editarInscripcion(this.estoyEditId?.toString()!, datosInscripcion)
               .subscribe({
                 next: () => {
                   this.inscripcionService
@@ -115,7 +129,7 @@ export class InscripcionesComponent {
           if (valido) {
             // SI NO ESTOY EDITANDO, AGREGAR NUEVO PRODUCTO ADAPTADA HTTP
             this.inscripcionService
-              .agregarInscripcion(this.inscripcionForm.value)
+              .agregarInscripcion(datosInscripcion)
               .subscribe({
                 next: () => {
                   this.inscripcionService

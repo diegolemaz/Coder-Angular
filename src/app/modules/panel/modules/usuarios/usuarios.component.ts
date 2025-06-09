@@ -17,24 +17,26 @@ export class UsuariosComponent {
   usuariosData: Usuario[] = [];
   estoyEditId: number | null = null;
   estoyCargando = false;
-// PARA DESHABILITAR FORM
-   autUsuario$: Observable<User | null>;
+  // PARA DESHABILITAR FORM
+  autUsuario$: Observable<User | null>;
 
   // VALIDACIONES Y SERVICIOS
 
   usuariosSubscription: Subscription | null = null;
 
   constructor(private fb: FormBuilder, private usuarioService: UsuarioService, private autServ: AutenticacionService) {
-  
+
     this.loadUsuariosObservable(); // llamando obs
-    
+
     // PARA DESHABILITAR FORM
     this.autUsuario$ = this.autServ.autenticacionUser$;
 
     this.usuarioForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.minLength(3),Validators.email]],
+      email: ['', [Validators.required, Validators.minLength(3), Validators.email]],
       password: ['', [Validators.required, Validators.minLength(3)]],
+      direccion: ['', [Validators.required, Validators.minLength(3)]],
+      tel: ['', [Validators.required, Validators.minLength(8), Validators.pattern('^[0-9]+$')]],
       role: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/^(admin|user)$/)]],
     });
   }
@@ -60,15 +62,15 @@ export class UsuariosComponent {
     if (this.usuarioForm.invalid) {
       alert('Hay errores en el formulario');
     } else {
-      
+
       // CREANDO FAKE
       const fakeToken = btoa(Math.random().toString(36).substring(2) + Date.now().toString(36));
-      const usuarioDataToken = {...this.usuarioForm.value, "token": fakeToken};
+      const usuarioDataToken = { ...this.usuarioForm.value, "token": fakeToken };
 
 
-      if (this.estoyEditId) {       
-        this.usuarioService.editarUsuario(this.estoyEditId.toString(),usuarioDataToken).subscribe({
-          next: (res) => {    
+      if (this.estoyEditId) {
+        this.usuarioService.editarUsuario(this.estoyEditId.toString(), usuarioDataToken).subscribe({
+          next: (res) => {
             this.usuariosData = [...this.usuariosData.filter((alu) => alu.id != res.id), res]
             this.estoyEditId = null;
           }
@@ -79,18 +81,18 @@ export class UsuariosComponent {
           next: (res) => {
             this.usuariosData = [...this.usuariosData, res]
           }
-        });  
+        });
       }
       this.usuarioForm.reset();
     }
-    
+
   }
 
   // BORRAR USUARIO ADAPTADA HTTP
   onBorrarUsuario(id: number | string) {
     if (confirm('Estas seguro que quieres eliminar el usuario?')) {
       this.usuarioService.borrarUsuario(id.toString()).subscribe({
-        next: (res) => { this.usuariosData = res}
+        next: (res) => { this.usuariosData = res }
       }
       )
     }
@@ -98,7 +100,7 @@ export class UsuariosComponent {
 
   // EDITAR USUARIO
   onEditarUsuario(alu: Usuario) {
-    this.estoyEditId = alu.id;   
+    this.estoyEditId = alu.id;
     this.usuarioForm.patchValue(alu);
   }
 

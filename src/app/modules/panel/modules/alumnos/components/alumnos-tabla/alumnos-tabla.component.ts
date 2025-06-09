@@ -11,7 +11,7 @@ import { User } from '../../../../../../core/models';
   templateUrl: './alumnos-tabla.component.html',
 })
 export class AlumnosTablaComponent {
-  displayedColumns: string[] = ['id', 'doc', 'alumno', 'acciones'];
+  displayedColumns: string[] = ['id', 'doc', 'alumno', 'perfil', 'acciones'];
 
 
   // INICIALIZAMOS DATA DEL COMPONENTE PADRE
