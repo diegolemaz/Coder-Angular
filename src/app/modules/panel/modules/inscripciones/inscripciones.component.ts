@@ -34,7 +34,7 @@ export class InscripcionesComponent {
     private cursoService: CursoService,
     private autServ: AutenticacionService
   ) {
-    this.loadInscripcionesObservable();
+    this.loadInscripcionesObservable(); // llamando obs
     this.loadAlumnosObservable();
     this.loadCursoObservable();
 
@@ -88,20 +88,21 @@ export class InscripcionesComponent {
 
   //ON SUBMIT EDITANDO O AGREGANDO INSC CON ALERT VALIDACION ADAPTADA HTTP Y ACTUALIZA TABLA
   onSubmit() {
+
+    let usuario: string = "";
+    this.autServ.autenticacionUser$.subscribe((usu) => {
+      usuario = usu?.email!
+    });
+
     if (this.inscripcionForm.invalid) {
       alert('Hay errores en el formulario de inscripcion');
-    } else {
-
-
-
-          const datosInscripcion = {
-      ...this.inscripcionForm.value, // MANTENEMOS VALORES ORIGINALES
-      fecha: new Date().toISOString(), // AGREGAMOS FECHA ACTUAL
       
-    };
-
-
-
+    } else {
+      const datosInscripcion = {
+        ...this.inscripcionForm.value, // MANTENEMOS LOS DATOS ORIGINALES
+        fecha: new Date().toISOString(), // AGREGAMOS FECHA ACTUAL
+        usuarioId: usuario, // AGREGAMOS EL USUARIO
+      };
 
       if (this.estoyEditId) {
         this.validarEditar().subscribe((valido) => {
