@@ -15,32 +15,33 @@
   <ng-container matColumnDef="alumno">
     <th mat-header-cell *matHeaderCellDef appCabeceras20>Alumno</th>
     <td mat-cell *matCellDef="let element">
-      {{ element | alumnoApellidoNombre | titlecase  }}
+      {{ element | alumnoApellidoNombre | titlecase }}
     </td>
   </ng-container>
-    <!-- Columna Perfil -->
+  <!-- Columna Perfil -->
   <ng-container matColumnDef="perfil">
     <th mat-header-cell *matHeaderCellDef appCabeceras20>Perfil</th>
     <td mat-cell *matCellDef="let element">
-      {{ element.perfil | titlecase  }}
+      {{ element.perfil | titlecase }}
     </td>
   </ng-container>
   <!-- Columna Acciones -->
   <ng-container matColumnDef="acciones">
     <th mat-header-cell *matHeaderCellDef appCabeceras20>Acciones</th>
     <td mat-cell *matCellDef="let element">
-       <button [routerLink]="element.id"  >
+      <button mat-icon-button matTooltip="Ver detalle" [routerLink]="element.id">
         <mat-icon>visibility</mat-icon>
-        </button>
-      <button [disabled]="(autUsuario$|async) ?.role != 'admin'"  (click)="editarAlumno.emit(element)">
+      </button>
+      <button mat-icon-button matTooltip="Editar" [disabled]="(autUsuario$|async) ?.role != 'admin'"
+        (click)="editarAlumno.emit(element)">
         <mat-icon>edit</mat-icon>
       </button>
-      <button [disabled]="(autUsuario$|async) ?.role != 'admin'" (click)="borrarAlumno.emit(element.id)">
+      <button mat-icon-button matTooltip="Eliminar" [disabled]="(autUsuario$|async) ?.role != 'admin'"
+        (click)="borrarAlumno.emit(element.id)">
         <mat-icon>delete</mat-icon>
       </button>
     </td>
   </ng-container>
-
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>

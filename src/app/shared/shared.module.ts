@@ -7,6 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 
 // modulo compartido para exportar todo
 
@@ -22,6 +24,7 @@ import { MatTableModule } from '@angular/material/table';
     MatSelectModule,
     MatTableModule,
     FormsModule,
+    MatTooltipModule,
   ],
 })
 export class SharedModule {}
